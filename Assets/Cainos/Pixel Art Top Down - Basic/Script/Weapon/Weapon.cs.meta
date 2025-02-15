@@ -1,2 +1,16 @@
 fileFormatVersion: 2
 guid: 4632c56560fa9ff4f9be3e19970471bb
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - player: {instanceID: 0}
+  - cam: {instanceID: 0}
+  - primaryIcon: {instanceID: 0}
+  - primaryDisplay: {instanceID: 0}
+  - primarySprite: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

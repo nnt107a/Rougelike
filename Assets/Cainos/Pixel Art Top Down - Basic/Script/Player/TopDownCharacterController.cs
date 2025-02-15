@@ -41,27 +41,31 @@ public class TopDownCharacterController : MonoBehaviour
         if (Input.GetKey(KeyCode.A))
         {
             dir.x = -1;
-            animator.SetInteger("Direction", 3);
         }
         else if (Input.GetKey(KeyCode.D))
         {
             dir.x = 1;
-            animator.SetInteger("Direction", 2);
         }
 
         if (Input.GetKey(KeyCode.W))
         {
             dir.y = 1;
-            animator.SetInteger("Direction", 1);
         }
         else if (Input.GetKey(KeyCode.S))
         {
             dir.y = -1;
-            animator.SetInteger("Direction", 0);
         }
 
         dir.Normalize();
-        animator.SetBool("IsMoving", dir.magnitude > 0);
+        animator.SetBool("running", dir.magnitude > 0);
+        if (dir.x > 0)
+        {
+            transform.localScale = Vector3.one;
+        }
+        else if (dir.x < 0)
+        {
+            transform.localScale = new Vector3(-1, 1, 1);
+        }
 
         body.linearVelocity = speed * dir;
 
@@ -98,14 +102,6 @@ public class TopDownCharacterController : MonoBehaviour
     {
         dashTimer = 0;
         dashDir = dir;
-        if (dashDir.x < 0)
-        {
-            dashWind.transform.localScale = new Vector3(-1, 1, 1);
-        }
-        else
-        {
-            dashWind.transform.localScale = Vector3.one;
-        }
         dashWind.SetActive(true);
         dashAnim.SetTrigger("active");
     }
