@@ -6,6 +6,7 @@ public class Weapon : MonoBehaviour
     [SerializeField] protected Transform player;
     [SerializeField] protected PlayerAttack playerAttack;
     [SerializeField] protected Camera cam;
+    [SerializeField] protected Animator anim;
 
     [Header("Primary Skill")]
     [SerializeField] protected Image primaryIcon;

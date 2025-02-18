@@ -76,7 +76,7 @@ public class FirePath : MonoBehaviour
         for (int i = 0; i < 8; i++)
         {
             ModifyCollider(i);
-            yield return new WaitForSeconds(7 / 60);
+            yield return new WaitForSeconds(7.0f / 60);
         }
     }
     private void OnTriggerEnter2D(Collider2D collision)
@@ -84,10 +84,6 @@ public class FirePath : MonoBehaviour
         if (collision.CompareTag("Destroyable"))
         {
             collision.GetComponent<Destroyable>().TakeDamage(damage);
-        }
-        if (collision.CompareTag("Player"))
-        {
-            collision.GetComponent<PlayerAttack>().TakeDamage(damage);
         }
     }
     public void Deactivate()

@@ -87,6 +87,9 @@ public class TopDownCharacterController : MonoBehaviour
                 dashDir = Vector2.zero;
                 dashWind.SetActive(false);
                 dashTime = 0;
+                Physics2D.IgnoreLayerCollision(23, 8, false);
+                Physics2D.IgnoreLayerCollision(23, 9, false);
+                Physics2D.IgnoreLayerCollision(23, 10, false);
             }
             else
             {
@@ -104,5 +107,8 @@ public class TopDownCharacterController : MonoBehaviour
         dashDir = dir;
         dashWind.SetActive(true);
         dashAnim.SetTrigger("active");
+        Physics2D.IgnoreLayerCollision(23, 8, true);
+        Physics2D.IgnoreLayerCollision(23, 9, true);
+        Physics2D.IgnoreLayerCollision(23, 10, true);
     }
 }
