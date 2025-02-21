@@ -5,9 +5,12 @@ public class FireStaff : Weapon
 {
     [Header ("Primary Skill")]
     [SerializeField] private GameObject[] fireballs;
+    [SerializeField] private float primaryCastTime;
 
     [Header ("Secondary Skill")]
     [SerializeField] private GameObject meteor;
+    [SerializeField] private float secondaryRange;
+    [SerializeField] private float secondaryCastTime;
 
     [Header("E Skill")]
     [SerializeField] private GameObject firepath;
@@ -41,6 +44,8 @@ public class FireStaff : Weapon
                                             player.localScale.z);
         }
         anim.SetTrigger("primary");
+        casting = true;
+        castingIden = (castingIden + 1) % castingLimit;
         StartCoroutine(ActivatePrimaryTimer());
     }
     private void ActivatePrimary()
@@ -56,8 +61,12 @@ public class FireStaff : Weapon
     }
     private IEnumerator ActivatePrimaryTimer()
     {
-        yield return new WaitForSeconds(32.0f / 60);
-        ActivatePrimary();
+        int tempCastingIden = castingIden;
+        yield return new WaitForSeconds(primaryCastTime);
+        if (casting && tempCastingIden == castingIden)
+        {
+            ActivatePrimary();
+        }
     }
     protected override void Secondary()
     {
@@ -68,18 +77,25 @@ public class FireStaff : Weapon
                                             player.localScale.z);
         }
         anim.SetTrigger("secondary");
+        casting = true;
+        castingIden = (castingIden + 1) % castingLimit;
         StartCoroutine(ActivateSecondaryTimer());
     }
     private void ActivateSecondary()
     {
         base.Secondary();
 
-        meteor.GetComponent<Meteor>().Activate(playerAttack.damage, cam.ScreenToWorldPoint(mousePosition));
+        Vector2 target = new Vector2(cam.ScreenToWorldPoint(mousePosition).x, cam.ScreenToWorldPoint(mousePosition).y);
+        meteor.GetComponent<Meteor>().Activate(playerAttack.damage, calcActualPos(player.position, target, secondaryRange));
     }
     private IEnumerator ActivateSecondaryTimer()
     {
-        yield return new WaitForSeconds(32.0f / 60);
-        ActivateSecondary();
+        int tempCastingIden = castingIden;
+        yield return new WaitForSeconds(secondaryCastTime);
+        if (casting && tempCastingIden == castingIden)
+        {
+            ActivateSecondary();
+        }
     }
     protected override void E()
     {
@@ -89,7 +105,13 @@ public class FireStaff : Weapon
             player.localScale = new Vector3(-player.localScale.x, player.localScale.y,
                                             player.localScale.z);
         }
-
+        anim.SetTrigger("e");
+        casting = true;
+        castingIden = (castingIden + 1) % castingLimit;
+        StartCoroutine(ActivateETimer());
+    }
+    private void ActivateE()
+    {
         base.E();
 
         Vector2 dir = Vector2.up;
@@ -102,5 +124,14 @@ public class FireStaff : Weapon
         offVector.Normalize();
         float angle = Vector2.Angle(offVector, dir);
         firepath.GetComponent<FirePath>().PreActivate(playerAttack.damage, player.position, angle, offVector);
+    }
+    private IEnumerator ActivateETimer()
+    {
+        int tempCastingIden = castingIden;
+        yield return new WaitForSeconds(secondaryCastTime);
+        if (casting && tempCastingIden == castingIden)
+        {
+            ActivateE();
+        }
     }
 }

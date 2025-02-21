@@ -2626,6 +2626,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 295406172}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &313885890 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4850165747237817089, guid: 811bdf11aea846c44a63e14bf5f12c45,
+    type: 3}
+  m_PrefabInstance: {fileID: 682285477770034731}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c622cf81738b5d49bc8c2a16df9d5a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &376144702
 GameObject:
   m_ObjectHideFlags: 0
@@ -14092,9 +14104,24 @@ PrefabInstance:
       objectReference: {fileID: 1267266223}
     - target: {fileID: 4850165747237817089, guid: 811bdf11aea846c44a63e14bf5f12c45,
         type: 3}
+      propertyPath: secondaryRange
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4850165747237817089, guid: 811bdf11aea846c44a63e14bf5f12c45,
+        type: 3}
+      propertyPath: primaryCastTime
+      value: 0.5333334
+      objectReference: {fileID: 0}
+    - target: {fileID: 4850165747237817089, guid: 811bdf11aea846c44a63e14bf5f12c45,
+        type: 3}
       propertyPath: secondaryDisplay
       value: 
       objectReference: {fileID: 1979007002}
+    - target: {fileID: 4850165747237817089, guid: 811bdf11aea846c44a63e14bf5f12c45,
+        type: 3}
+      propertyPath: secondaryCastTime
+      value: 0.5333334
+      objectReference: {fileID: 0}
     - target: {fileID: 4850165747237817089, guid: 811bdf11aea846c44a63e14bf5f12c45,
         type: 3}
       propertyPath: 'fireballs.Array.data[0]'
@@ -14331,6 +14358,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5628018141983903119, guid: ef67ba864d1ecc042b5f4cf48455c0a6,
+        type: 3}
+      propertyPath: weapon
+      value: 
+      objectReference: {fileID: 313885890}
     - target: {fileID: 5628018141983903119, guid: ef67ba864d1ecc042b5f4cf48455c0a6,
         type: 3}
       propertyPath: dashIcon

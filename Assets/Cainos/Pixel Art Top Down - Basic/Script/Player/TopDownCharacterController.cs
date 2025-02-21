@@ -7,6 +7,8 @@ public class TopDownCharacterController : MonoBehaviour
     private Rigidbody2D body;
     private Vector2 dir;
 
+    [SerializeField] private Weapon weapon;
+
     [SerializeField] private Image dashIcon;
     [SerializeField] private Image dashDisplay;
     [SerializeField] private Sprite dashSprite;
@@ -58,6 +60,11 @@ public class TopDownCharacterController : MonoBehaviour
 
         dir.Normalize();
         animator.SetBool("running", dir.magnitude > 0);
+        if (dir.magnitude > 0)
+        {
+            weapon.casting = false;
+            animator.Play("run");
+        }
         if (dir.x > 0)
         {
             transform.localScale = Vector3.one;

@@ -7,6 +7,9 @@ public class Weapon : MonoBehaviour
     [SerializeField] protected PlayerAttack playerAttack;
     [SerializeField] protected Camera cam;
     [SerializeField] protected Animator anim;
+    protected int castingIden = 0;
+    protected int castingLimit = 10;
+    public bool casting;
 
     [Header("Primary Skill")]
     [SerializeField] protected Image primaryIcon;
@@ -92,5 +95,25 @@ public class Weapon : MonoBehaviour
     {
         eTimer = 0;
         playerAttack.mana.UseMana(eManaCost);
+    }
+
+    protected Vector2 calcActualPos(Vector2 pos, Vector2 target, float range)
+    {
+        Vector2 dir = new Vector2(target.x - pos.x, target.y - pos.y);
+        Vector2 tmpDir = new Vector2(dir.x, dir.y);
+        dir.Normalize();
+
+        Vector2 tmpPos = Vector2.zero;
+        if (tmpDir.magnitude > range)
+        {
+            tmpPos.x = pos.x + dir.x * range;
+            tmpPos.y = pos.y + dir.y * range;
+        }
+        else
+        {
+            tmpPos.x = target.x;
+            tmpPos.y = target.y;
+        }
+        return tmpPos;
     }
 }
