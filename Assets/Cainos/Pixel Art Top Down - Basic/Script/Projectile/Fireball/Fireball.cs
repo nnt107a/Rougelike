@@ -62,6 +62,14 @@ public class Fireball : MonoBehaviour
         {
             collision.GetComponent<Destroyable>().TakeDamage(damage);
         }
+        if (collision.CompareTag("Enemy"))
+        {
+            if (collision.GetComponent<Skeleton>())
+            {
+                collision.GetComponent<Skeleton>().TakeDamage(damage);
+                collision.GetComponent<Skeleton>().ActivateAnim();
+            }
+        }
     }
     private void Deactivate()
     {

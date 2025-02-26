@@ -47,6 +47,8 @@ MonoBehaviour:
   player: {fileID: 0}
   playerAttack: {fileID: 0}
   cam: {fileID: 0}
+  anim: {fileID: 0}
+  casting: 0
   primaryIcon: {fileID: 0}
   primaryDisplay: {fileID: 0}
   primarySprite: {fileID: -8164208767523148520, guid: f9a62b0409f42c240a7453983b1cf9b4,
@@ -75,5 +77,8 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  primaryCastTime: 0.5333334
   meteor: {fileID: 0}
+  secondaryRange: 7
+  secondaryCastTime: 0.5333334
   firepath: {fileID: 0}
