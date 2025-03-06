@@ -64,11 +64,8 @@ public class Fireball : MonoBehaviour
         }
         if (collision.CompareTag("Enemy"))
         {
-            if (collision.GetComponent<Skeleton>())
-            {
-                collision.GetComponent<Skeleton>().TakeDamage(damage);
-                collision.GetComponent<Skeleton>().ActivateAnim();
-            }
+            collision.GetComponent<Enemy>()?.TakeDamage(damage);
+            collision.GetComponent<Enemy>()?.ActivateAnim();
         }
     }
     private void Deactivate()

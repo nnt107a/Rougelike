@@ -7,7 +7,7 @@ public class Meteor : MonoBehaviour
     [SerializeField] private float damageScale;
     private float damage;
     private Animator anim;
-    private PolygonCollider2D collider;
+    private new PolygonCollider2D collider;
     private void Awake()
     {
         anim = GetComponentInChildren<Animator>();

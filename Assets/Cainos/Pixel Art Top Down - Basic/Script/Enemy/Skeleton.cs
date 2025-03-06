@@ -68,9 +68,8 @@ public class Skeleton : Enemy
                                                transform.localScale.y, transform.localScale.z);
         }
     }
-    public void ActivateAnim()
+    public override void ActivateAnim()
     {
-        Debug.Log(currentHealth);
         if (currentHealth > 0)
         {
             hit = true;

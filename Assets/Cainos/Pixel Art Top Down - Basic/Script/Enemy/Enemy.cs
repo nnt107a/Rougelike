@@ -37,6 +37,10 @@ public class Enemy : Health
     {
         return Vector2.zero;
     }
+    public virtual void ActivateAnim()
+    {
+
+    }
     protected void Deactivate()
     {
         spawnerHandler.DecreaseEnemy();
