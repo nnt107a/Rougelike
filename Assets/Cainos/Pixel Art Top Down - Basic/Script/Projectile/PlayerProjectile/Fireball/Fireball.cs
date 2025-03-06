@@ -54,6 +54,10 @@ public class Fireball : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (collision.CompareTag("Standable"))
+        {
+            return;
+        }
         collider.enabled = false;
         hit = true;
         anim.SetTrigger("explode");

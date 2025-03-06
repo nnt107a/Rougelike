@@ -11,9 +11,14 @@ public class SpawnerHandler : MonoBehaviour
     private float spawnCD;
     private float spawnTimer = 0;
     private int enemiesCounter;
+    ArrayList spawns = new ArrayList();
     private void Awake()
     {
         spawnCD = Random.Range(minSpawnCD * 100, maxSpawnCD * 100 + 1) * 1.0f / 100;
+        foreach (GameObject enemy in enemies)
+        {
+            spawns.Add(enemy);
+        }
     }
     private void Update()
     {
@@ -31,18 +36,13 @@ public class SpawnerHandler : MonoBehaviour
     }
     private GameObject FindEnemy()
     {
-        for (int i = 0; i < enemies.Length; i++)
-        {
-            if (!enemies[i].activeInHierarchy)
-            {
-                return enemies[i];
-            }
-        }
-        return enemies[0];
+        int rand = Random.Range(0, spawns.Count);
+        return (GameObject)spawns[rand];
     }
     private void SpawnEnemy(GameObject enemy)
     {
         StartCoroutine(Danger(enemy));
+        spawns.Remove(enemy);
     }
     private IEnumerator Danger(GameObject enemy)
     {
@@ -69,8 +69,9 @@ public class SpawnerHandler : MonoBehaviour
         }
         return dangerIcons[0];
     }
-    public void DecreaseEnemy()
+    public void DecreaseEnemy(GameObject enemy)
     {
         enemiesCounter -= 1;
+        spawns.Add(enemy);
     }
 }

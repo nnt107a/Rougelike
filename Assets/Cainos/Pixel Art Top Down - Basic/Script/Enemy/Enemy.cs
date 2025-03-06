@@ -3,6 +3,7 @@ using UnityEngine.AI;
 
 public class Enemy : Health
 {
+    [Header("Enemy")]
     [SerializeField] protected float iFrameTime;
     [SerializeField] protected float attackCooldown;
     [SerializeField] protected float attackDamage;
@@ -13,12 +14,15 @@ public class Enemy : Health
     [SerializeField] protected float minSpawnDistance = 5.0f;
     [SerializeField] protected float maxSpawnDistance = 10.0f;
     [SerializeField] protected SpawnerHandler spawnerHandler;
+    [SerializeField] protected GameObject enemy;
 
     protected Animator anim;
     protected BoxCollider2D boxCollider;
     protected NavMeshAgent navMeshAgent;
     protected bool hit;
     protected bool dead;
+    protected bool fleeing;
+    protected bool attacking;
     protected float attackTimer = 0;
     protected void Awake()
     {
@@ -43,6 +47,6 @@ public class Enemy : Health
     }
     protected void Deactivate()
     {
-        spawnerHandler.DecreaseEnemy();
+        spawnerHandler.DecreaseEnemy(enemy);
     }
 }
