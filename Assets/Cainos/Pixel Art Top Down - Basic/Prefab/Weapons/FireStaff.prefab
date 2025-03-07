@@ -53,14 +53,14 @@ MonoBehaviour:
   primaryDisplay: {fileID: 0}
   primarySprite: {fileID: -8164208767523148520, guid: f9a62b0409f42c240a7453983b1cf9b4,
     type: 3}
-  primaryCooldown: 0.75
-  primaryManaCost: 1
+  primaryCooldown: 0.2
+  primaryManaCost: 0.5
   secondaryIcon: {fileID: 0}
   secondaryDisplay: {fileID: 0}
   secondarySprite: {fileID: 3825495786281991643, guid: 6a2b1bfdc2aebe748a1ac3a3d14c56f8,
     type: 3}
-  secondaryCooldown: 7
-  secondaryManaCost: 5
+  secondaryCooldown: 5
+  secondaryManaCost: 7
   eIcon: {fileID: 0}
   eDisplay: {fileID: 0}
   eSprite: {fileID: 7862682726366196481, guid: 0b3e858cdc908024ea618e6589857d97, type: 3}
