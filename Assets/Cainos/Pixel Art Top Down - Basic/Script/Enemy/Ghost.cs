@@ -11,14 +11,12 @@ public class Ghost : Enemy
     [SerializeField] private GameObject[] magicBullets;
     private string horSide;
     private string verSide;
-    private SpriteRenderer spriteRenderer;
     private void Awake()
     {
         base.Awake();
         anim = GetComponent<Animator>();
         boxCollider = GetComponent<BoxCollider2D>();
         navMeshAgent = GetComponent<NavMeshAgent>();
-        spriteRenderer = GetComponent<SpriteRenderer>();
 
         navMeshAgent.updateRotation = false;
         navMeshAgent.updateUpAxis = false;
@@ -127,17 +125,13 @@ public class Ghost : Enemy
     {
         Physics2D.IgnoreLayerCollision(10, 6, true);
         Physics2D.IgnoreLayerCollision(10, 7, true);
-        spriteRenderer.color = new Color(spriteRenderer.color.r, spriteRenderer.color.g,
-                                         spriteRenderer.color.b, 0.2f);
         yield return new WaitForSeconds(iFrameTime);
         Physics2D.IgnoreLayerCollision(10, 6, false);
         Physics2D.IgnoreLayerCollision(10, 7, false);
-        spriteRenderer.color = new Color(spriteRenderer.color.r, spriteRenderer.color.g,
-                                         spriteRenderer.color.b, 1);
         hit = false;
     }
 
-    private int FindMagicBullet()
+    private int findMagicBullet()
     {
         for (int i = 0; i < magicBullets.Length; i++)
         {
@@ -158,12 +152,12 @@ public class Ghost : Enemy
     {
         Vector3 targetPosition = playerTransform.position;
 
-        magicBullets[FindMagicBullet()].transform.position = transform.position;
+        magicBullets[findMagicBullet()].transform.position = transform.position;
         Vector2 dir = new Vector2(targetPosition.x - transform.position.x,
                                   targetPosition.y - transform.position.y);
         dir.Normalize();
 
-        magicBullets[FindMagicBullet()].GetComponent<MagicBullet>().Activate(dir, attackDamage);
+        magicBullets[findMagicBullet()].GetComponent<MagicBullet>().Activate(dir, attackDamage);
     }
     private IEnumerator AttackTimer()
     {

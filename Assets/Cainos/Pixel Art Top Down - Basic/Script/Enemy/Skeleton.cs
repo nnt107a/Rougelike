@@ -11,8 +11,8 @@ public class Skeleton : Enemy
         base.Awake();
         anim = GetComponent<Animator>();
         boxCollider = GetComponent<BoxCollider2D>();
-        capsuleCollider = GetComponentInChildren<CapsuleCollider2D>();
-        circleCollider = GetComponentInChildren<CircleCollider2D>();
+        capsuleCollider = GetComponent<CapsuleCollider2D>();
+        circleCollider = GetComponent<CircleCollider2D>();
         navMeshAgent = GetComponent<NavMeshAgent>();
 
         navMeshAgent.updateRotation = false;
@@ -132,7 +132,6 @@ public class Skeleton : Enemy
         if (collision.CompareTag("Player"))
         {
             collision.GetComponent<PlayerAttack>().TakeDamage(attackDamage);
-            collision.GetComponent<PlayerAttack>().ActivateAnim();
         }
     }
     public void Deactivate()

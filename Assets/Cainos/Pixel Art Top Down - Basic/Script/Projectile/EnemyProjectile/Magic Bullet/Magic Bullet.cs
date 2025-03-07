@@ -66,7 +66,6 @@ public class MagicBullet : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             collision.GetComponent<PlayerAttack>().TakeDamage(damage);
-            collision.GetComponent<PlayerAttack>().ActivateAnim();
         }
 
         Deactivate();
