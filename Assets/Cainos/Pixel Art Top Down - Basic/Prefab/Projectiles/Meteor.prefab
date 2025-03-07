@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 7570721689097967187}
   m_Layer: 6
   m_Name: MeteorDisplay
-  m_TagString: Untagged
+  m_TagString: PlayerSkill
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -167,7 +167,7 @@ PolygonCollider2D:
       - {x: -0.469183, y: -0.07701249}
       - {x: -0.43656647, y: -0.11841474}
       - {x: -0.37130198, y: -0.16914696}
-      - {x: -0.26664802, y: -0.22210966}
+      - {x: -0.24649575, y: -0.21091391}
       - {x: -0.11573091, y: -0.24762137}
       - {x: 0.1820948, y: -0.24412537}
       - {x: 0.40809834, y: -0.14658362}
@@ -200,7 +200,7 @@ GameObject:
   - component: {fileID: 6329780303828499670}
   m_Layer: 6
   m_Name: Meteor
-  m_TagString: Untagged
+  m_TagString: PlayerSkill
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

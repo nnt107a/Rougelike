@@ -234,10 +234,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd84cd6e80f63c742a08c44b9c564ab0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingHealth: 4
+  startingHealth: 15
   iFrameTime: 0.5
   attackCooldown: 2
-  attackDamage: 2
+  attackDamage: 20
   attackRange: 0.75
   attackOffset: 0.5
   playerLayer:

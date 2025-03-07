@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 6386828064832508591}
   m_Layer: 7
   m_Name: FirePath
-  m_TagString: Untagged
+  m_TagString: PlayerSkill
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

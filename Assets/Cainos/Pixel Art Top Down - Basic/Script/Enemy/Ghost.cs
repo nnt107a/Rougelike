@@ -160,7 +160,7 @@ public class Ghost : Enemy
 
         magicBullets[FindMagicBullet()].transform.position = transform.position;
         Vector2 dir = new Vector2(targetPosition.x - transform.position.x,
-                                  targetPosition.y - transform.position.y);
+                                  targetPosition.y - 0.1f - transform.position.y);
         dir.Normalize();
 
         magicBullets[FindMagicBullet()].GetComponent<MagicBullet>().Activate(dir, attackDamage);

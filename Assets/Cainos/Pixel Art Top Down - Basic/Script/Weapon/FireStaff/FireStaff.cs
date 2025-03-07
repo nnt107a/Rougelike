@@ -14,6 +14,7 @@ public class FireStaff : Weapon
 
     [Header("E Skill")]
     [SerializeField] private GameObject firepath;
+    [SerializeField] private float eCastTime;
 
     private Vector3 mousePosition;
     private void Awake()
@@ -128,7 +129,7 @@ public class FireStaff : Weapon
     private IEnumerator ActivateETimer()
     {
         int tempCastingIden = castingIden;
-        yield return new WaitForSeconds(secondaryCastTime);
+        yield return new WaitForSeconds(eCastTime);
         if (casting && tempCastingIden == castingIden)
         {
             ActivateE();

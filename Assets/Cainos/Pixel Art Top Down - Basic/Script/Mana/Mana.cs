@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class Mana : MonoBehaviour
 {
@@ -8,10 +9,17 @@ public class Mana : MonoBehaviour
     private void Awake()
     {
         currentMana = startingMana;
+        StartCoroutine(RecoverMana());
     }
     private void Update()
     {
-        currentMana = Mathf.Clamp(currentMana + manaRegenerateSpeed * Time.deltaTime, 0, startingMana);
+        
+    }
+    private IEnumerator RecoverMana()
+    {
+        currentMana = Mathf.Clamp(currentMana + manaRegenerateSpeed, 0, startingMana);
+        yield return new WaitForSeconds(1);
+        StartCoroutine(RecoverMana());
     }
     public void UseMana(float _change)
     {
