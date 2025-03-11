@@ -12,7 +12,7 @@ public class Ghost : Enemy
     private string horSide;
     private string verSide;
     private SpriteRenderer spriteRenderer;
-    private void Awake()
+    protected override void Awake()
     {
         base.Awake();
         anim = GetComponent<Animator>();
@@ -26,7 +26,7 @@ public class Ghost : Enemy
 
         gameObject.SetActive(false);
     }
-    private void Update()
+    protected override void Update()
     {
         if (dead)
         {
@@ -170,7 +170,7 @@ public class Ghost : Enemy
         yield return new WaitForSeconds(88f / 60);
         attacking = false;
     }
-    public void Deactivate()
+    public override void Deactivate()
     {
         base.Deactivate();
         gameObject.SetActive(false);
@@ -186,7 +186,7 @@ public class Ghost : Enemy
         hit = false;
         dead = false;
         currentHealth = startingHealth;
-        attackTimer = 0;
+        attackTimer = attackCooldown;
         navMeshAgent.updatePosition = true;
         navMeshAgent.updateRotation = false;
         navMeshAgent.updateUpAxis = false;

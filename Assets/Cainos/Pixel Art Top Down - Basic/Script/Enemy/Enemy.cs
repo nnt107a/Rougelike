@@ -24,13 +24,13 @@ public class Enemy : Health
     protected bool fleeing;
     protected bool attacking;
     protected float attackTimer = 0;
-    protected void Awake()
+    protected virtual void Awake()
     {
         base.Awake();
         hit = false;
         dead = false;
     }
-    protected void Update()
+    protected virtual void Update()
     {
         base.Update();
     }
@@ -45,7 +45,7 @@ public class Enemy : Health
     {
 
     }
-    protected void Deactivate()
+    public virtual void Deactivate()
     {
         spawnerHandler.DecreaseEnemy(enemy);
     }

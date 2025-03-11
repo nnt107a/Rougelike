@@ -2602,7 +2602,7 @@ PrefabInstance:
         type: 3}
       propertyPath: spawnerHandler
       value: 
-      objectReference: {fileID: 776091703}
+      objectReference: {fileID: 776091705}
     - target: {fileID: 1137527047087500309, guid: 0f981db3a22455b429f39b8cb7b51663,
         type: 3}
       propertyPath: playerTransform
@@ -12018,7 +12018,7 @@ PrefabInstance:
         type: 3}
       propertyPath: spawnerHandler
       value: 
-      objectReference: {fileID: 776091703}
+      objectReference: {fileID: 776091705}
     - target: {fileID: 8285594982120679726, guid: 290b243f5fd458247bb01fc7442de908,
         type: 3}
       propertyPath: playerTransform
@@ -12606,7 +12606,7 @@ PrefabInstance:
         type: 3}
       propertyPath: spawnerHandler
       value: 
-      objectReference: {fileID: 776091703}
+      objectReference: {fileID: 776091705}
     - target: {fileID: 8285594982120679726, guid: 290b243f5fd458247bb01fc7442de908,
         type: 3}
       propertyPath: playerTransform
@@ -12667,7 +12667,7 @@ PrefabInstance:
         type: 3}
       propertyPath: spawnerHandler
       value: 
-      objectReference: {fileID: 776091703}
+      objectReference: {fileID: 776091705}
     - target: {fileID: 1137527047087500309, guid: 0f981db3a22455b429f39b8cb7b51663,
         type: 3}
       propertyPath: playerTransform
@@ -13163,7 +13163,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 776091704}
-  - component: {fileID: 776091703}
+  - component: {fileID: 776091705}
   m_Layer: 0
   m_Name: SpawnerHandler
   m_TagString: Untagged
@@ -13171,39 +13171,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &776091703
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 776091702}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 67c656ca590ea324196b430763c6daa8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemies:
-  - {fileID: 1872442462}
-  - {fileID: 756856069}
-  - {fileID: 2042463225}
-  - {fileID: 1366175128}
-  - {fileID: 68216178}
-  - {fileID: 956622289}
-  - {fileID: 559623006}
-  - {fileID: 1599184982}
-  - {fileID: 77587000}
-  - {fileID: 1215832467}
-  minSpawnCD: 1
-  maxSpawnCD: 1.5
-  playerTransform: {fileID: 1622224631}
-  dangerIcons:
-  - {fileID: 1844056336}
-  - {fileID: 859885538}
-  - {fileID: 1760574524}
-  - {fileID: 436818166}
-  - {fileID: 1430776552}
-  - {fileID: 834230377}
 --- !u!4 &776091704
 Transform:
   m_ObjectHideFlags: 0
@@ -13216,9 +13183,35 @@ Transform:
   m_LocalPosition: {x: -22.144934, y: -26.262297, z: -0.0650613}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1462102441}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &776091705
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 776091702}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04b2c675478d30b44b02707f2976eda6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minSpawnerCD: 1
+  maxSpawnerCD: 1.5
+  numEnemies: 5
+  dangerIcons:
+  - {fileID: 1844056336}
+  - {fileID: 859885538}
+  - {fileID: 1760574524}
+  - {fileID: 436818166}
+  - {fileID: 1430776552}
+  - {fileID: 834230377}
+  spawners:
+  - {fileID: 1629188382}
+  - {fileID: 913526102}
 --- !u!1001 &791489644
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13251,7 +13244,7 @@ PrefabInstance:
         type: 3}
       propertyPath: spawnerHandler
       value: 
-      objectReference: {fileID: 776091703}
+      objectReference: {fileID: 776091705}
     - target: {fileID: 1137527047087500309, guid: 0f981db3a22455b429f39b8cb7b51663,
         type: 3}
       propertyPath: playerTransform
@@ -13353,6 +13346,59 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df1a8e65aeaf7e541b33fd8e8e775ca3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &913526101
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 913526103}
+  - component: {fileID: 913526102}
+  m_Layer: 0
+  m_Name: Skeleton Spawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &913526102
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 913526101}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67c656ca590ea324196b430763c6daa8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemies:
+  - {fileID: 1872442462}
+  - {fileID: 756856069}
+  - {fileID: 2042463225}
+  - {fileID: 1366175128}
+  - {fileID: 68216178}
+  playerTransform: {fileID: 1622224631}
+  spawnerHandler: {fileID: 776091705}
+  minSpawnCount: 2
+--- !u!4 &913526103
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 913526101}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1462102441}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &941082142
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14009,6 +14055,39 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1451491144}
   m_CullTransparentMesh: 1
+--- !u!1 &1462102440
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1462102441}
+  m_Layer: 0
+  m_Name: SpawnerHolder
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1462102441
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1462102440}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1629188381}
+  - {fileID: 913526103}
+  m_Father: {fileID: 776091704}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1467707185
 GameObject:
   m_ObjectHideFlags: 0
@@ -14161,7 +14240,7 @@ PrefabInstance:
         type: 3}
       propertyPath: spawnerHandler
       value: 
-      objectReference: {fileID: 776091703}
+      objectReference: {fileID: 776091705}
     - target: {fileID: 1137527047087500309, guid: 0f981db3a22455b429f39b8cb7b51663,
         type: 3}
       propertyPath: playerTransform
@@ -14283,6 +14362,59 @@ Transform:
   - {fileID: 1283197212}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1629188380
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1629188381}
+  - component: {fileID: 1629188382}
+  m_Layer: 0
+  m_Name: Ghost Spawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1629188381
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1629188380}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1462102441}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1629188382
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1629188380}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39e3a45bbe1d48140b308edd3af13ed7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemies:
+  - {fileID: 956622289}
+  - {fileID: 559623006}
+  - {fileID: 1599184982}
+  - {fileID: 77587000}
+  - {fileID: 1215832467}
+  playerTransform: {fileID: 1622224631}
+  spawnerHandler: {fileID: 776091705}
+  minSpawnCount: 2
 --- !u!1 &1701085918
 GameObject:
   m_ObjectHideFlags: 0
@@ -14597,7 +14729,7 @@ PrefabInstance:
         type: 3}
       propertyPath: spawnerHandler
       value: 
-      objectReference: {fileID: 776091703}
+      objectReference: {fileID: 776091705}
     - target: {fileID: 8285594982120679726, guid: 290b243f5fd458247bb01fc7442de908,
         type: 3}
       propertyPath: playerTransform
@@ -14948,7 +15080,7 @@ PrefabInstance:
         type: 3}
       propertyPath: spawnerHandler
       value: 
-      objectReference: {fileID: 776091703}
+      objectReference: {fileID: 776091705}
     - target: {fileID: 8285594982120679726, guid: 290b243f5fd458247bb01fc7442de908,
         type: 3}
       propertyPath: playerTransform
@@ -15104,7 +15236,7 @@ PrefabInstance:
         type: 3}
       propertyPath: spawnerHandler
       value: 
-      objectReference: {fileID: 776091703}
+      objectReference: {fileID: 776091705}
     - target: {fileID: 8285594982120679726, guid: 290b243f5fd458247bb01fc7442de908,
         type: 3}
       propertyPath: playerTransform
@@ -15300,7 +15432,7 @@ PrefabInstance:
         type: 3}
       propertyPath: spawnerHandler
       value: 
-      objectReference: {fileID: 776091703}
+      objectReference: {fileID: 776091705}
     - target: {fileID: 1137527047087500309, guid: 0f981db3a22455b429f39b8cb7b51663,
         type: 3}
       propertyPath: startingHealth

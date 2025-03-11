@@ -6,7 +6,7 @@ public class Skeleton : Enemy
 {
     private CapsuleCollider2D capsuleCollider;
     private CircleCollider2D circleCollider;
-    private void Awake()
+    protected override void Awake()
     {
         base.Awake();
         anim = GetComponent<Animator>();
@@ -24,7 +24,7 @@ public class Skeleton : Enemy
 
         gameObject.SetActive(false);
     }
-    private void Update()
+    protected override void Update()
     {
         if (dead)
         {
@@ -135,7 +135,7 @@ public class Skeleton : Enemy
             collision.GetComponent<PlayerAttack>().ActivateAnim();
         }
     }
-    public void Deactivate()
+    public override void Deactivate()
     {
         base.Deactivate();
         capsuleCollider.enabled = false;
@@ -153,7 +153,7 @@ public class Skeleton : Enemy
         hit = false;
         dead = false;
         currentHealth = startingHealth;
-        attackTimer = 0;
+        attackTimer = attackCooldown;
         navMeshAgent.updatePosition = true;
         navMeshAgent.updateRotation = false;
         navMeshAgent.updateUpAxis = false;
