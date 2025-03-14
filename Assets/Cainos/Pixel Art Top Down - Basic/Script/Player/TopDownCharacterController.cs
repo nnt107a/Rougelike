@@ -15,6 +15,7 @@ public class TopDownCharacterController : MonoBehaviour
     [SerializeField] private float dashCooldown;
     [SerializeField] private float dashSpeed;
     [SerializeField] private float dashDuration;
+    private PlayerAttack playerAttack;
     private float dashTimer = Mathf.Infinity;
     private float dashTime = 0;
     private Vector2 dashDir;
@@ -29,6 +30,7 @@ public class TopDownCharacterController : MonoBehaviour
     private void Awake()
     {
         body = GetComponent<Rigidbody2D>();
+        playerAttack = GetComponent<PlayerAttack>();
         dashIcon.sprite = dashSprite;
         dashDisplay.sprite = dashSprite;
         dashDisplay.fillAmount = 1 - Mathf.Min(dashTimer / dashCooldown, 1);
@@ -39,6 +41,10 @@ public class TopDownCharacterController : MonoBehaviour
 
     private void Update()
     {
+        if (playerAttack.die)
+        {
+            return;
+        }
         dir = Vector2.zero;
         if (Input.GetKey(KeyCode.A))
         {

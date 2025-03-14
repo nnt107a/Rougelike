@@ -234,10 +234,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd84cd6e80f63c742a08c44b9c564ab0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  baseHealth: 15
   startingHealth: 15
   iFrameTime: 0.5
   attackCooldown: 2
-  attackDamage: 20
+  baseAttackDamage: 12
   attackRange: 0.75
   attackOffset: 0.5
   playerLayer:
@@ -248,6 +249,7 @@ MonoBehaviour:
   maxSpawnDistance: 5
   spawnerHandler: {fileID: 0}
   enemy: {fileID: 9027859816532981480}
+  runHandler: {fileID: 0}
 --- !u!61 &2928874450945441723
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -3,10 +3,12 @@ using UnityEngine.UI;
 
 public class Health : MonoBehaviour
 {
-    [SerializeField] public float startingHealth;
+    [SerializeField] public float baseHealth;
+    public float startingHealth;
     public float currentHealth { get; protected set; }
     protected void Awake()
     {
+        startingHealth = baseHealth;
         currentHealth = startingHealth;
     }
     protected void Update()

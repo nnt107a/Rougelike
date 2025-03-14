@@ -257,10 +257,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70d6b7e272481404ab76bb31f616b64b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingHealth: 3
+  baseHealth: 10
+  startingHealth: 10
   iFrameTime: 0.5
   attackCooldown: 3
-  attackDamage: 1
+  baseAttackDamage: 5
   attackRange: 9
   attackOffset: 1
   playerLayer:
@@ -271,6 +272,7 @@ MonoBehaviour:
   maxSpawnDistance: 10
   spawnerHandler: {fileID: 0}
   enemy: {fileID: 1671596389959533333}
+  runHandler: {fileID: 0}
   fleeRange: 2
   fleeDistance: 4
   stoppingDistance: 6

@@ -6,7 +6,7 @@ public class Enemy : Health
     [Header("Enemy")]
     [SerializeField] protected float iFrameTime;
     [SerializeField] protected float attackCooldown;
-    [SerializeField] protected float attackDamage;
+    [SerializeField] protected float baseAttackDamage;
     [SerializeField] protected float attackRange;
     [SerializeField] protected float attackOffset;
     [SerializeField] protected LayerMask playerLayer;
@@ -15,6 +15,8 @@ public class Enemy : Health
     [SerializeField] protected float maxSpawnDistance = 10.0f;
     [SerializeField] protected SpawnerHandler spawnerHandler;
     [SerializeField] protected GameObject enemy;
+    [SerializeField] protected RunHandler runHandler;
+    protected float attackDamage;
 
     protected Animator anim;
     protected BoxCollider2D boxCollider;
@@ -27,6 +29,9 @@ public class Enemy : Health
     protected virtual void Awake()
     {
         base.Awake();
+        startingHealth = baseHealth * runHandler.healthModifier();
+        currentHealth = startingHealth;
+        attackDamage = baseAttackDamage * runHandler.damageModifier();
         hit = false;
         dead = false;
     }

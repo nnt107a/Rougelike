@@ -11,6 +11,7 @@ public class PlayerAttack : Health
 
     private Animator anim;
     private SpriteRenderer spriteRenderer;
+    public bool die;
     
     private void Awake()
     {
@@ -28,6 +29,7 @@ public class PlayerAttack : Health
         else
         {
             anim.Play("die");
+            die = true;
         }
     }
     private IEnumerator IFrame()
