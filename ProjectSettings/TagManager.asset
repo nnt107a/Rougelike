@@ -9,6 +9,7 @@ TagManager:
   - Enemy
   - Standable
   - PlayerSkill
+  - Collectable
   layers:
   - Default
   - TransparentFX

@@ -16,6 +16,7 @@ public class Enemy : Health
     [SerializeField] protected SpawnerHandler spawnerHandler;
     [SerializeField] protected GameObject enemy;
     [SerializeField] protected RunHandler runHandler;
+    [SerializeField] protected CoinHolder coinHolder;
     protected float attackDamage;
 
     protected Animator anim;
@@ -29,9 +30,9 @@ public class Enemy : Health
     protected virtual void Awake()
     {
         base.Awake();
-        startingHealth = baseHealth * runHandler.healthModifier();
+        startingHealth = baseHealth * runHandler.HealthModifier();
         currentHealth = startingHealth;
-        attackDamage = baseAttackDamage * runHandler.damageModifier();
+        attackDamage = baseAttackDamage * runHandler.DamageModifier();
         hit = false;
         dead = false;
     }
@@ -52,6 +53,7 @@ public class Enemy : Health
     }
     public virtual void Deactivate()
     {
+        coinHolder.Spawn(transform.position);
         spawnerHandler.DecreaseEnemy(enemy);
     }
 }

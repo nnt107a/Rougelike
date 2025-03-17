@@ -5,6 +5,9 @@ public class PlayerAttack : Health
 {
     [Header("Player attributes")]
     [SerializeField] public float damage;
+    [SerializeField] public float coinMultipler;
+    [SerializeField] public float coinDropRate;
+    [SerializeField] public float collectableRange;
 
     [Header("Player resources")]
     [SerializeField] public Mana mana;

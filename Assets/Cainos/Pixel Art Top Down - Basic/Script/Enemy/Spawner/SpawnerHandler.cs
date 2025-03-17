@@ -5,25 +5,69 @@ public class SpawnerHandler : MonoBehaviour
 {
     [SerializeField] private float minSpawnerCD = 1.0f;
     [SerializeField] private float maxSpawnerCD = 1.5f;
-    [SerializeField] private int numEnemies;
     [SerializeField] private DangerIcon[] dangerIcons;
     [SerializeField] private Spawner[] spawners;
+    [SerializeField] private RunHandler runHandler;
+    [SerializeField] private int baseNumEnemies;
+    private int numEnemies;
+    private int enemiesCounter;
     private float spawnerCD = 1.5f;
     private float spawnerTimer = 0;
     private int spawnedCounter;
     private int constraintSpawnedCounter;
+    private bool waiting;
     private void Awake()
     {
+        int cnt = 0;
+        numEnemies = runHandler.EnemiesModifier(baseNumEnemies);
         foreach (Spawner spawner in spawners)
         {
-            constraintSpawnedCounter += spawner.minSpawnCount;
+            if (spawner.enabled)
+            {
+                cnt += 1;
+            }
+        }
+        foreach (Spawner spawner in spawners)
+        {
+            if (spawner.enabled)
+            {
+                spawner.minSpawnCount = numEnemies / 2 / cnt;
+                constraintSpawnedCounter += spawner.minSpawnCount;
+            }
+        }
+    }
+    private void NextWave()
+    {
+        int cnt = 0;
+        foreach (Spawner spawner in spawners)
+        {
+            if (spawner.enabled)
+            {
+                cnt += 1;
+            }
+        }
+        foreach (Spawner spawner in spawners)
+        {
+            if (spawner.enabled)
+            {
+                spawner.minSpawnCount = numEnemies / 2 / cnt;
+                constraintSpawnedCounter += spawner.minSpawnCount;
+            }
         }
     }
     private void Update()
     {
+        if (waiting)
+        {
+            return;
+        }
         if (spawnedCounter == numEnemies)
         {
-            gameObject.SetActive(false);
+            if (enemiesCounter == 0)
+            {
+                waiting = true;
+                StartCoroutine(CounterToNextWave());
+            }
             return;
         }
         if (spawnerTimer < spawnerCD)
@@ -71,6 +115,7 @@ public class SpawnerHandler : MonoBehaviour
         tmpIcon.Deactivate();
         tmpComp?.Spawn(tmpPos);
         spawnedCounter += 1;
+        enemiesCounter += 1;
     }
     public DangerIcon FindDangerIcon()
     {
@@ -83,6 +128,10 @@ public class SpawnerHandler : MonoBehaviour
         }
         return dangerIcons[0];
     }
+    public void SetNumEnemy(int num)
+    {
+        numEnemies = num;
+    }
     public void DecreaseEnemy(GameObject enemy)
     {
         foreach (Spawner spawner in spawners)
@@ -90,8 +139,19 @@ public class SpawnerHandler : MonoBehaviour
             if (spawner.name.Split(" ")[0] == enemy.name.Split(" ")[0])
             {
                 spawner.ReturnEnemy(enemy);
+                enemiesCounter -= 1;
                 return;
             }
         }
+    }
+    private IEnumerator CounterToNextWave()
+    {
+        yield return new WaitForSeconds(5);
+        runHandler.currentWave += 1;
+        constraintSpawnedCounter = 0;
+        spawnedCounter = 0;
+        numEnemies = runHandler.EnemiesModifier(baseNumEnemies);
+        NextWave();
+        waiting = false;
     }
 }
