@@ -8,7 +8,7 @@ public class Ghost : Enemy
     [SerializeField] private float fleeRange;
     [SerializeField] private float fleeDistance;
     [SerializeField] private float stoppingDistance;
-    [SerializeField] private GameObject[] magicBullets;
+    [SerializeField] private ProjectilesSpawner projectilesSpawner;
     private string horSide;
     private string verSide;
     private SpriteRenderer spriteRenderer;
@@ -136,18 +136,6 @@ public class Ghost : Enemy
                                          spriteRenderer.color.b, 1);
         hit = false;
     }
-
-    private int FindMagicBullet()
-    {
-        for (int i = 0; i < magicBullets.Length; i++)
-        {
-            if (!magicBullets[i].activeInHierarchy)
-            {
-                return i;
-            }
-        }
-        return 0;
-    }
     private void Attack1(string verSide, string horSide)
     {
         attacking = true;
@@ -158,12 +146,12 @@ public class Ghost : Enemy
     {
         Vector3 targetPosition = playerTransform.position;
 
-        magicBullets[FindMagicBullet()].transform.position = transform.position;
+        projectilesSpawner.FindProjectiles().transform.position = transform.position;
         Vector2 dir = new Vector2(targetPosition.x - transform.position.x,
                                   targetPosition.y - 0.1f - transform.position.y);
         dir.Normalize();
 
-        magicBullets[FindMagicBullet()].GetComponent<MagicBullet>().Activate(dir, attackDamage);
+        projectilesSpawner.FindProjectiles().GetComponent<MagicBullet>().Activate(dir, attackDamage);
     }
     private IEnumerator AttackTimer()
     {

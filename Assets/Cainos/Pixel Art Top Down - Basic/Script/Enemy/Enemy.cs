@@ -25,6 +25,7 @@ public class Enemy : Health
     protected bool hit;
     protected bool dead;
     protected bool fleeing;
+    protected bool chasing;
     protected bool attacking;
     protected float attackTimer = 0;
     protected virtual void Awake()
