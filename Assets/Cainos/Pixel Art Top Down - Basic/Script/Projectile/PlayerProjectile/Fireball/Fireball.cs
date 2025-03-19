@@ -54,7 +54,7 @@ public class Fireball : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Standable") || collision.CompareTag("PlayerSkill"))
+        if (collision.CompareTag("Standable") || collision.CompareTag("PlayerSkill") || collision.CompareTag("Collectable"))
         {
             return;
         }

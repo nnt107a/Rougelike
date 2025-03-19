@@ -1,13 +1,16 @@
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class PlayerAttack : Health
 {
     [Header("Player attributes")]
-    [SerializeField] public float damage;
-    [SerializeField] public float coinMultipler;
-    [SerializeField] public float coinDropRate;
-    [SerializeField] public float collectableRange;
+    [SerializeField] public float baseDamage;
+    [SerializeField] public float baseCoinMultipler;
+    [SerializeField] public float baseCoinDropRate;
+    [SerializeField] public float baseCollectableRange;
+    public Dictionary<string, float> baseStats;
+    public Dictionary<string, float> stats;
 
     [Header("Player resources")]
     [SerializeField] public Mana mana;
@@ -19,8 +22,33 @@ public class PlayerAttack : Health
     private void Awake()
     {
         base.Awake();
+        stats = new Dictionary<string, float>();
+        baseStats = new Dictionary<string, float>();
         anim = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        stats.Add("damage", 0);
+        stats.Add("coinMultipler", 1);
+        stats.Add("coinDropRate", 1);
+        stats.Add("collectableRange", 1);
+        baseStats.Add("damage", baseDamage);
+        baseStats.Add("coinMultipler", baseCoinMultipler);
+        baseStats.Add("coinDropRate", baseCoinDropRate);
+        baseStats.Add("collectableRange", baseCollectableRange);
+        stats["damage"] = baseDamage;
+        stats["coinMultipler"] = baseCoinMultipler;
+        stats["coinDropRate"] = baseCoinDropRate;
+        stats["collectableRange"] = baseCollectableRange;
+    }
+    public void ModifyStat(string attr, float value, bool percentage)
+    {
+        if (percentage)
+        {
+            stats[attr] += value * baseStats[attr];
+        }
+        else
+        {
+            stats[attr] += value;
+        }
     }
     public void ActivateAnim()
     {
@@ -49,6 +77,7 @@ public class PlayerAttack : Health
     }
     private void Update()
     {
+        base.Update();
     }
     public void Deactivate()
     {

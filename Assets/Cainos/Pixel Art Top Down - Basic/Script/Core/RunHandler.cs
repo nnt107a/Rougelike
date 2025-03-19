@@ -3,7 +3,7 @@ using UnityEngine;
 public class RunHandler : MonoBehaviour
 {
     [SerializeField] private SpawnerHandler spawnerHandler;
-    public int currentWave;
+    public int currentWave = 0;
     public int maxWave;
 
     public float HealthModifier()

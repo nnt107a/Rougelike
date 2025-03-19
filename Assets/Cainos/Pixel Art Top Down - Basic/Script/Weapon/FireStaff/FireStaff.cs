@@ -58,7 +58,7 @@ public class FireStaff : Weapon
                                   mousePosition.y - cam.WorldToScreenPoint(player.position).y);
         dir.Normalize();
 
-        fireballs[findFireball()].GetComponent<Fireball>().Activate(dir, playerAttack.damage);
+        fireballs[findFireball()].GetComponent<Fireball>().Activate(dir, playerAttack.stats["damage"]);
     }
     private IEnumerator ActivatePrimaryTimer()
     {
@@ -87,7 +87,7 @@ public class FireStaff : Weapon
         base.Secondary();
 
         Vector2 target = new Vector2(cam.ScreenToWorldPoint(mousePosition).x, cam.ScreenToWorldPoint(mousePosition).y);
-        meteor.GetComponent<Meteor>().Activate(playerAttack.damage, calcActualPos(player.position, target, secondaryRange));
+        meteor.GetComponent<Meteor>().Activate(playerAttack.stats["damage"], calcActualPos(player.position, target, secondaryRange));
     }
     private IEnumerator ActivateSecondaryTimer()
     {
@@ -124,7 +124,7 @@ public class FireStaff : Weapon
                                         mousePosition.y - cam.WorldToScreenPoint(player.position).y);
         offVector.Normalize();
         float angle = Vector2.Angle(offVector, dir);
-        firepath.GetComponent<FirePath>().PreActivate(playerAttack.damage, player.position, angle, offVector);
+        firepath.GetComponent<FirePath>().PreActivate(playerAttack.stats["damage"], player.position, angle, offVector);
     }
     private IEnumerator ActivateETimer()
     {

@@ -23,7 +23,7 @@ public class Collectable : MonoBehaviour
     }
     public void Spawn(Vector3 position, float dropRate)
     {
-        if (Random.Range(0, 1) <= dropRate)
+        if (Random.Range(0f, 1f) <= dropRate)
         {
             gameObject.SetActive(true);
             transform.position = position;
@@ -31,7 +31,7 @@ public class Collectable : MonoBehaviour
     }
     protected bool PlayerCollectable()
     {
-        RaycastHit2D hit = Physics2D.CircleCast(transform.position, playerAttack.collectableRange, Vector2.zero, 0f, playerLayer);
+        RaycastHit2D hit = Physics2D.CircleCast(transform.position, playerAttack.stats["collectableRange"], Vector2.zero, 0f, playerLayer);
         return hit.collider != null;
     }
 }

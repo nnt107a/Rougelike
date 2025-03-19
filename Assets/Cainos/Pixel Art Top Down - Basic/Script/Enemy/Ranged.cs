@@ -63,13 +63,16 @@ public class Ranged : Enemy
             fleeing = false;
         }
 
-        if (!attacking && !fleeing && HasReachedDestination())
+        if (!hit)
         {
-            anim.Play("idle");
-        }
-        else if (fleeing || !HasReachedDestination())
-        {
-            anim.Play("walk");
+            if (!attacking && !fleeing && HasReachedDestination())
+            {
+                anim.Play("idle");
+            }
+            else if (fleeing || !HasReachedDestination())
+            {
+                anim.Play("walk");
+            }
         }
 
         if (playerTransform.position.x > transform.position.x && transform.localScale.x < 0)
@@ -116,7 +119,7 @@ public class Ranged : Enemy
         if (currentHealth > 0)
         {
             hit = true;
-            anim.Play("hit");
+            anim.Play("hurt");
             StartCoroutine(IFrame());
         }
         else
