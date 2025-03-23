@@ -7,6 +7,7 @@ public class PlayerAttack : Health
     [Header("Player attributes")]
     [SerializeField] public float baseDamage;
     [SerializeField] public float baseCoinMultipler;
+    [SerializeField] public float baseExpMultipler;
     [SerializeField] public float baseCoinDropRate;
     [SerializeField] public float baseCollectableRange;
     public Dictionary<string, float> baseStats;
@@ -14,6 +15,7 @@ public class PlayerAttack : Health
 
     [Header("Player resources")]
     [SerializeField] public Mana mana;
+    [SerializeField] public ExpBar exp;
 
     private Animator anim;
     private SpriteRenderer spriteRenderer;
@@ -26,18 +28,24 @@ public class PlayerAttack : Health
         baseStats = new Dictionary<string, float>();
         anim = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
-        stats.Add("damage", 0);
-        stats.Add("coinMultipler", 1);
-        stats.Add("coinDropRate", 1);
-        stats.Add("collectableRange", 1);
+        stats.Add("damage", baseDamage);
+        stats.Add("health", baseHealth);
+        stats.Add("healthRegen", baseHealthRegen);
+        stats.Add("mana", mana.baseMana);
+        stats.Add("manaRegen", mana.baseManaRegen);
+        stats.Add("coinMultipler", baseCoinMultipler);
+        stats.Add("expMultipler", baseExpMultipler);
+        stats.Add("coinDropRate", baseCoinDropRate);
+        stats.Add("collectableRange", baseCollectableRange);
         baseStats.Add("damage", baseDamage);
+        baseStats.Add("health", baseHealth);
+        baseStats.Add("healthRegen", baseHealthRegen);
+        baseStats.Add("mana", mana.baseMana);
+        baseStats.Add("manaRegen", mana.baseManaRegen);
         baseStats.Add("coinMultipler", baseCoinMultipler);
+        baseStats.Add("expMultipler", baseExpMultipler);
         baseStats.Add("coinDropRate", baseCoinDropRate);
         baseStats.Add("collectableRange", baseCollectableRange);
-        stats["damage"] = baseDamage;
-        stats["coinMultipler"] = baseCoinMultipler;
-        stats["coinDropRate"] = baseCoinDropRate;
-        stats["collectableRange"] = baseCollectableRange;
     }
     public void ModifyStat(string attr, float value, bool percentage)
     {
@@ -48,6 +56,22 @@ public class PlayerAttack : Health
         else
         {
             stats[attr] += value;
+        }
+        if (attr == "health")
+        {
+            startingHealth = stats["health"];
+        }
+        if (attr == "healthRegen")
+        {
+            healthRegenerateSpeed = stats["healthRegen"];
+        }
+        if (attr == "mana")
+        {
+            mana.startingMana = stats["mana"];
+        }
+        if (attr == "manaRegen")
+        {
+            mana.manaRegenerateSpeed = stats["manaRegen"];
         }
     }
     public void ActivateAnim()

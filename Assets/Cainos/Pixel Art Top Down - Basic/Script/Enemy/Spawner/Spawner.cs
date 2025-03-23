@@ -6,6 +6,7 @@ public class Spawner : MonoBehaviour
     public GameObject[] enemies;
     [SerializeField] protected Transform playerTransform;
     [SerializeField] protected SpawnerHandler spawnerHandler;
+    [SerializeField] public string[] attributes;
     public int minSpawnCount;
     protected ArrayList spawns = new ArrayList();
     public int activeEnemies {get; protected set;}

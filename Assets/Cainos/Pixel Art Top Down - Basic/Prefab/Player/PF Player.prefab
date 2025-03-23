@@ -44,8 +44,58 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9af97e53b5e11478e3a628bcb93c6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingMana: 20
-  manaRegenerateSpeed: 0.5
+  baseMana: 70
+  startingMana: 70
+  baseManaRegen: 0.2
+  manaRegenerateSpeed: 0.2
+--- !u!1 &1788672405436704911
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8713812723395063682}
+  - component: {fileID: 2072257856918760909}
+  m_Layer: 23
+  m_Name: ExpBar
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8713812723395063682
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1788672405436704911}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5628018141983903106}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2072257856918760909
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1788672405436704911}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2aad3ac3a3aeb9148bc3ef33ecd61772, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseExpRequired: 6
+  currentLevel: 0
+  expRequired: 0
+  currentExp: 0
 --- !u!1 &5628018140324151388
 GameObject:
   m_ObjectHideFlags: 0
@@ -171,6 +221,7 @@ Transform:
   - {fileID: 5628018140324151391}
   - {fileID: 136068758780411220}
   - {fileID: 5145704318105458506}
+  - {fileID: 8713812723395063682}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5628018141983903119
@@ -357,9 +408,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5858ebb2115a884c8f013c31c73fca0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingHealth: 10
-  damage: 1
+  baseHealth: 50
+  startingHealth: 50
+  baseHealthRegen: 0
+  healthRegenerateSpeed: 0
+  baseDamage: 100
+  baseCoinMultipler: 1
+  baseExpMultipler: 1
+  baseCoinDropRate: 0.5
+  baseCollectableRange: 3
   mana: {fileID: 549158785047570501}
+  exp: {fileID: 2072257856918760909}
+  die: 0
 --- !u!1 &9049708643476455080
 GameObject:
   m_ObjectHideFlags: 0

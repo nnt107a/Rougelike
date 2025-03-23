@@ -64,9 +64,7 @@ public class SpawnerHandler : MonoBehaviour
             if (enemiesCounter == 0)
             {
                 waiting = true;
-                enemySelection.SetActive(true);
-                enemySelection.GetComponent<EnemySelection>().Gen();
-                Time.timeScale = 0;
+                StartCoroutine(CounterToSelection());
             }
             return;
         }
@@ -116,6 +114,14 @@ public class SpawnerHandler : MonoBehaviour
         tmpComp?.Spawn(tmpPos);
         spawnedCounter += 1;
         enemiesCounter += 1;
+    }
+
+    public IEnumerator CounterToSelection()
+    {
+        yield return new WaitForSeconds(1);
+        enemySelection.SetActive(true);
+        enemySelection.GetComponent<EnemySelection>().Gen();
+        Time.timeScale = 0;
     }
     public DangerIcon FindDangerIcon()
     {

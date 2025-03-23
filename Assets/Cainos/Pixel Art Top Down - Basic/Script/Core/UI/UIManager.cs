@@ -9,6 +9,9 @@ public class UIManager : MonoBehaviour
     [Header("Manabar")]
     [SerializeField] private Image manaBarDisplay;
 
+    [Header("Expbar")]
+    [SerializeField] private Image expBarDisplay;
+
     [Header("Progressbar")]
     [SerializeField] private Image progressBarDisplay;
     [SerializeField] private RunHandler runHandler;
@@ -24,6 +27,7 @@ public class UIManager : MonoBehaviour
     {
         healthBarDisplay.fillAmount = 1 - playerAttack.currentHealth / playerAttack.startingHealth;
         manaBarDisplay.fillAmount = 1 - playerAttack.mana.currentMana / playerAttack.mana.startingMana;
+        expBarDisplay.fillAmount = 1 - playerAttack.exp.currentExp / playerAttack.exp.expRequired;
         progressBarDisplay.fillAmount = runHandler.currentWave * 1.0f / runHandler.maxWave;
         coinDisplay.text = ((int)CoinHandler.instance.coinCounter).ToString();
     }

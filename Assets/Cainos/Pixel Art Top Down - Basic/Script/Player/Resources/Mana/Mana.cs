@@ -3,12 +3,16 @@ using System.Collections;
 
 public class Mana : MonoBehaviour
 {
-    [SerializeField] public float startingMana;
-    [SerializeField] private float manaRegenerateSpeed;
+    [SerializeField] public float baseMana;
+    public float startingMana;
+    [SerializeField] public float baseManaRegen;
+    public float manaRegenerateSpeed;
     public float currentMana { get; private set; }
     private void Awake()
     {
+        startingMana = baseMana;
         currentMana = startingMana;
+        manaRegenerateSpeed = baseManaRegen;
         StartCoroutine(RecoverMana());
     }
     private void Update()

@@ -1,17 +1,19 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using System.Collections;
 
 public class EnemySelect : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
 {
     [SerializeField] private int pos;
     [SerializeField] private Image[] images;
     [SerializeField] private GameObject enemySelection;
-    private Text text;
+    private string attribute;
+    private Text txt;
     private RectTransform rectTransform;
     private void Awake()
     {
-        text = GetComponent<Text>();
+        txt = GetComponentInChildren<Text>();
         rectTransform = GetComponent<RectTransform>();
     }
     private void Update()
@@ -19,8 +21,29 @@ public class EnemySelect : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     }
     public void Activate()
     {
-        images[0].sprite = enemySelection.GetComponent<EnemySelection>().sprites[enemySelection.GetComponent<EnemySelection>().ints1[pos]];
-        images[1].sprite = enemySelection.GetComponent<EnemySelection>().sprites[enemySelection.GetComponent<EnemySelection>().ints2[pos]];
+        attribute = "Attribute: ";
+        ArrayList tmp = new ArrayList();
+        int p1 = enemySelection.GetComponent<EnemySelection>().ints1[pos];
+        int p2 = enemySelection.GetComponent<EnemySelection>().ints2[pos];
+        images[0].sprite = enemySelection.GetComponent<EnemySelection>().sprites[p1];
+        images[1].sprite = enemySelection.GetComponent<EnemySelection>().sprites[p2];
+        foreach (string attr in enemySelection.GetComponent<EnemySelection>().spawners[p1].GetComponent<Spawner>().attributes)
+        {
+            tmp.Add(attr);
+        }
+        foreach (string attr in enemySelection.GetComponent<EnemySelection>().spawners[p2].GetComponent<Spawner>().attributes)
+        {
+            if (!tmp.Contains(attr))
+            {
+                tmp.Add(attr);
+            }
+        }
+        foreach (string item in tmp)
+        {
+            attribute = attribute + item + ", ";
+        }
+        attribute = attribute.Remove(attribute.Length - 2);
+        txt.text = attribute;
     }
     public void OnPointerEnter(PointerEventData eventData)
     {
