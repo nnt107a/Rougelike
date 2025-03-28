@@ -23,15 +23,16 @@ public class EnemySelect : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     {
         attribute = "Attribute: ";
         ArrayList tmp = new ArrayList();
-        int p1 = enemySelection.GetComponent<EnemySelection>().ints1[pos];
-        int p2 = enemySelection.GetComponent<EnemySelection>().ints2[pos];
-        images[0].sprite = enemySelection.GetComponent<EnemySelection>().sprites[p1];
-        images[1].sprite = enemySelection.GetComponent<EnemySelection>().sprites[p2];
-        foreach (string attr in enemySelection.GetComponent<EnemySelection>().spawners[p1].GetComponent<Spawner>().attributes)
+        EnemySelection enemy = enemySelection.GetComponent<EnemySelection>();
+        int p1 = enemy.ints1[pos];
+        int p2 = enemy.ints2[pos];
+        images[0].sprite = enemy.sprites[p1];
+        images[1].sprite = enemy.sprites[p2];
+        foreach (string attr in enemy.spawners[p1].GetComponent<Spawner>().attributes)
         {
             tmp.Add(attr);
         }
-        foreach (string attr in enemySelection.GetComponent<EnemySelection>().spawners[p2].GetComponent<Spawner>().attributes)
+        foreach (string attr in enemy.spawners[p2].GetComponent<Spawner>().attributes)
         {
             if (!tmp.Contains(attr))
             {
@@ -56,20 +57,21 @@ public class EnemySelect : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     }
     public void OnPointerClick(PointerEventData eventData)
     {
-        for (int i = 0; i < enemySelection.GetComponent<EnemySelection>().spawners.Length; i++)
+        EnemySelection enemy = enemySelection.GetComponent<EnemySelection>();
+        for (int i = 0; i < enemy.spawners.Length; i++)
         {
-            if (i != enemySelection.GetComponent<EnemySelection>().ints1[pos] && i != enemySelection.GetComponent<EnemySelection>().ints2[pos])
+            if (i != enemy.ints1[pos] && i != enemySelection.GetComponent<EnemySelection>().ints2[pos])
             {
-                enemySelection.GetComponent<EnemySelection>().spawners[i].GetComponent<Spawner>().enabled = false;
-                enemySelection.GetComponent<EnemySelection>().spawners[i].SetActive(false);
+                enemy.spawners[i].GetComponent<Spawner>().enabled = false;
+                enemy.spawners[i].SetActive(false);
             }
             else
             {
-                enemySelection.GetComponent<EnemySelection>().spawners[i].GetComponent<Spawner>().enabled = true;
-                enemySelection.GetComponent<EnemySelection>().spawners[i].SetActive(true);
+                enemy.spawners[i].GetComponent<Spawner>().enabled = true;
+                enemy.spawners[i].SetActive(true);
             }
         }
-        enemySelection.GetComponent<EnemySelection>().spawnerHandler.ActiveNextWave();
+        enemy.spawnerHandler.ActiveNextWave();
         enemySelection.SetActive(false);
         Time.timeScale = 1;
     }

@@ -29,4 +29,8 @@ public class Mana : MonoBehaviour
     {
         currentMana = Mathf.Clamp(currentMana - _change, 0, startingMana);
     }
+    public void IncreaseMana(float value)
+    {
+        currentMana = Mathf.Clamp(currentMana + value, 0, startingMana);
+    }
 }

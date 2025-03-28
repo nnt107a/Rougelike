@@ -120,6 +120,7 @@ public class Ghost : Enemy
         {
             dead = true;
             navMeshAgent.updatePosition = false;
+            boxCollider.enabled = false;
             anim.Play("die");
         }
     }
@@ -171,6 +172,7 @@ public class Ghost : Enemy
     public override void Spawn(Vector2 position)
     {
         gameObject.SetActive(true);
+        boxCollider.enabled = true;
         hit = false;
         dead = false;
         currentHealth = startingHealth;

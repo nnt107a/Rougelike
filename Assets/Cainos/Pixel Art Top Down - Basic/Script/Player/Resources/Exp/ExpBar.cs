@@ -3,6 +3,7 @@ using UnityEngine;
 public class ExpBar : MonoBehaviour
 {
     [SerializeField] private float baseExpRequired;
+    [SerializeField] private GameObject levelUpSelection;
     public int currentLevel;
     public float expRequired;
     public float currentExp;
@@ -19,6 +20,9 @@ public class ExpBar : MonoBehaviour
             currentExp -= expRequired;
             currentLevel += 1;
             CalcExpRequired();
+            levelUpSelection.SetActive(true);
+            levelUpSelection.GetComponent<LevelUpSelection>().Gen();
+            Time.timeScale = 0;
         }
     }
     private void CalcExpRequired()

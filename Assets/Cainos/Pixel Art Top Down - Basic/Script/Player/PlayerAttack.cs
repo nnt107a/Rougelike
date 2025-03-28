@@ -60,6 +60,7 @@ public class PlayerAttack : Health
         if (attr == "health")
         {
             startingHealth = stats["health"];
+            currentHealth = Mathf.Clamp(currentHealth + (percentage ? value * baseStats[attr] : value), 0, startingHealth);
         }
         if (attr == "healthRegen")
         {
@@ -68,6 +69,7 @@ public class PlayerAttack : Health
         if (attr == "mana")
         {
             mana.startingMana = stats["mana"];
+            mana.IncreaseMana((percentage ? value * baseStats[attr] : value));
         }
         if (attr == "manaRegen")
         {

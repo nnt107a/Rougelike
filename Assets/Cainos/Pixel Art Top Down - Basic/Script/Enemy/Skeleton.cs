@@ -79,6 +79,7 @@ public class Skeleton : Enemy
         else
         {
             dead = true;
+            boxCollider.enabled = false;
             navMeshAgent.updatePosition = false;
             anim.Play("die");
         }
@@ -150,6 +151,7 @@ public class Skeleton : Enemy
     public override void Spawn(Vector2 position)
     {
         gameObject.SetActive(true);
+        boxCollider.enabled = true;
         hit = false;
         dead = false;
         currentHealth = startingHealth;
