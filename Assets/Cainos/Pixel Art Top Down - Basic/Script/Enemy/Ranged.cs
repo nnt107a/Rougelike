@@ -173,16 +173,8 @@ public class Ranged : Enemy
     }
     public override void Spawn(Vector2 position)
     {
+        base.Spawn(position);
         gameObject.SetActive(true);
-        boxCollider.enabled = true;
-        hit = false;
-        dead = false;
-        currentHealth = startingHealth;
-        attackTimer = attackCooldown;
-        navMeshAgent.updatePosition = true;
-        navMeshAgent.updateRotation = false;
-        navMeshAgent.updateUpAxis = false;
-
         transform.position = position;
     }
 }

@@ -14,6 +14,10 @@ public class RunHandler : MonoBehaviour
     {
         return Mathf.Pow(1.02f, currentWave - 1);    
     }
+    public float DefModifier()
+    {
+        return Mathf.Pow(1.02f, currentWave - 1);
+    }
     public int EnemiesModifier(int numEnemies)
     {
         return (int)(numEnemies * Mathf.Pow(1.2f, currentWave - 1));

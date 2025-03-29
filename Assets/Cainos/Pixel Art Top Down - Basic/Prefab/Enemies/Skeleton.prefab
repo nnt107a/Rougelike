@@ -236,6 +236,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseHealth: 15
   startingHealth: 15
+  baseHealthRegen: 0
+  healthRegenerateSpeed: 0
   iFrameTime: 0.5
   attackCooldown: 2
   baseAttackDamage: 12
@@ -250,6 +252,9 @@ MonoBehaviour:
   spawnerHandler: {fileID: 0}
   enemy: {fileID: 9027859816532981480}
   runHandler: {fileID: 0}
+  coinHolder: {fileID: 0}
+  expHolder: {fileID: 0}
+  baseDef: 20
 --- !u!61 &2928874450945441723
 BoxCollider2D:
   m_ObjectHideFlags: 0

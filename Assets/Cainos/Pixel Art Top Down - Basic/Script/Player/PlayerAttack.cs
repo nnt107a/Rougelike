@@ -10,6 +10,7 @@ public class PlayerAttack : Health
     [SerializeField] public float baseExpMultipler;
     [SerializeField] public float baseCoinDropRate;
     [SerializeField] public float baseCollectableRange;
+    [SerializeField] public float baseDef;
     public Dictionary<string, float> baseStats;
     public Dictionary<string, float> stats;
 
@@ -28,15 +29,6 @@ public class PlayerAttack : Health
         baseStats = new Dictionary<string, float>();
         anim = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
-        stats.Add("damage", baseDamage);
-        stats.Add("health", baseHealth);
-        stats.Add("healthRegen", baseHealthRegen);
-        stats.Add("mana", mana.baseMana);
-        stats.Add("manaRegen", mana.baseManaRegen);
-        stats.Add("coinMultipler", baseCoinMultipler);
-        stats.Add("expMultipler", baseExpMultipler);
-        stats.Add("coinDropRate", baseCoinDropRate);
-        stats.Add("collectableRange", baseCollectableRange);
         baseStats.Add("damage", baseDamage);
         baseStats.Add("health", baseHealth);
         baseStats.Add("healthRegen", baseHealthRegen);
@@ -46,6 +38,18 @@ public class PlayerAttack : Health
         baseStats.Add("expMultipler", baseExpMultipler);
         baseStats.Add("coinDropRate", baseCoinDropRate);
         baseStats.Add("collectableRange", baseCollectableRange);
+        baseStats.Add("def", baseDef);
+        stats.Add("damage", baseDamage);
+        stats.Add("health", baseHealth);
+        stats.Add("healthRegen", baseHealthRegen);
+        stats.Add("mana", mana.baseMana);
+        stats.Add("manaRegen", mana.baseManaRegen);
+        stats.Add("coinMultipler", baseCoinMultipler);
+        stats.Add("expMultipler", baseExpMultipler);
+        stats.Add("coinDropRate", baseCoinDropRate);
+        stats.Add("collectableRange", baseCollectableRange);
+        stats.Add("def", baseDef);
+        def = stats["def"];
     }
     public void ModifyStat(string attr, float value, bool percentage)
     {
@@ -75,6 +79,7 @@ public class PlayerAttack : Health
         {
             mana.manaRegenerateSpeed = stats["manaRegen"];
         }
+        def = stats["def"];
     }
     public void ActivateAnim()
     {

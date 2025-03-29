@@ -7,6 +7,7 @@ public class Health : MonoBehaviour
     public float startingHealth;
     [SerializeField] public float baseHealthRegen;
     public float healthRegenerateSpeed;
+    protected float def;
     public float currentHealth { get; protected set; }
     protected void Awake()
     {
@@ -33,6 +34,6 @@ public class Health : MonoBehaviour
     }
     public void TakeDamage(float damage)
     {
-        currentHealth = Mathf.Clamp(currentHealth - damage, 0, startingHealth);
+        currentHealth = Mathf.Clamp(currentHealth - damage * (100f - def) / 100f, 0, startingHealth);
     }
 }

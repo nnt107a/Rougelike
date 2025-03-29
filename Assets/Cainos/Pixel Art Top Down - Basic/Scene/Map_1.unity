@@ -21414,6 +21414,7 @@ MonoBehaviour:
   - {fileID: 827538889749247048, guid: be0bf1ce99810ed4d9387c5aee57e8a2, type: 3}
   - {fileID: -6145296276634656061, guid: 9fffbce36c9b1e34188ab72ab211e95f, type: 3}
   - {fileID: 2784468965456250579, guid: 2daaea2c0445f024b90b55a4fbb383ee, type: 3}
+  - {fileID: -6440241708844039593, guid: d7f09551dec84494797047d8a8923902, type: 3}
   levelUpsSelects:
   - {fileID: 86807405}
   - {fileID: 878527156}
@@ -21423,6 +21424,7 @@ MonoBehaviour:
   - damage,ATK,0.05
   - healthRegen,Health Regeneration,0.05
   - mana,Max MP,0.1
+  - def,DEF,0.1
   ints: 00000000000000000000000000000000
 --- !u!1 &1230441081 stripped
 GameObject:
@@ -53525,21 +53527,6 @@ PrefabInstance:
       propertyPath: projectilesSpawner
       value: 
       objectReference: {fileID: 1286427319}
-    - target: {fileID: 1137527047087500309, guid: 0f981db3a22455b429f39b8cb7b51663,
-        type: 3}
-      propertyPath: 'magicBullets.Array.data[0]'
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 1137527047087500309, guid: 0f981db3a22455b429f39b8cb7b51663,
-        type: 3}
-      propertyPath: 'magicBullets.Array.data[1]'
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 1137527047087500309, guid: 0f981db3a22455b429f39b8cb7b51663,
-        type: 3}
-      propertyPath: 'magicBullets.Array.data[2]'
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 1671596389959533333, guid: 0f981db3a22455b429f39b8cb7b51663,
         type: 3}
       propertyPath: m_Name
@@ -53690,8 +53677,13 @@ PrefabInstance:
       objectReference: {fileID: 1062273015}
     - target: {fileID: 8743169421663962332, guid: ef67ba864d1ecc042b5f4cf48455c0a6,
         type: 3}
+      propertyPath: baseDef
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8743169421663962332, guid: ef67ba864d1ecc042b5f4cf48455c0a6,
+        type: 3}
       propertyPath: baseDamage
-      value: 7
+      value: 15
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

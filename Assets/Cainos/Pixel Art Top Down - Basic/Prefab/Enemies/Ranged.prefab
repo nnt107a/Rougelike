@@ -224,6 +224,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseHealth: 15
   startingHealth: 15
+  baseHealthRegen: 0
+  healthRegenerateSpeed: 0
   iFrameTime: 0.4
   attackCooldown: 2
   baseAttackDamage: 5
@@ -239,6 +241,8 @@ MonoBehaviour:
   enemy: {fileID: 5006524730333349013}
   runHandler: {fileID: 0}
   coinHolder: {fileID: 0}
+  expHolder: {fileID: 0}
+  baseDef: 10
   fleeRange: 2
   fleeDistance: 4
   stoppingDistance: 6

@@ -16,7 +16,6 @@ public class Ghost : Enemy
     {
         base.Awake();
         anim = GetComponent<Animator>();
-        boxCollider = GetComponent<BoxCollider2D>();
         navMeshAgent = GetComponent<NavMeshAgent>();
         spriteRenderer = GetComponent<SpriteRenderer>();
 
@@ -171,16 +170,8 @@ public class Ghost : Enemy
     }
     public override void Spawn(Vector2 position)
     {
+        base.Spawn(position);
         gameObject.SetActive(true);
-        boxCollider.enabled = true;
-        hit = false;
-        dead = false;
-        currentHealth = startingHealth;
-        attackTimer = attackCooldown;
-        navMeshAgent.updatePosition = true;
-        navMeshAgent.updateRotation = false;
-        navMeshAgent.updateUpAxis = false;
-
         transform.position = position;
     }
 }

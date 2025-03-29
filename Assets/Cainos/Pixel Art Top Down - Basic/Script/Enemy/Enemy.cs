@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.AI;
+using System.Collections.Generic;
 
 public class Enemy : Health
 {
@@ -29,12 +30,27 @@ public class Enemy : Health
     protected bool chasing;
     protected bool attacking;
     protected float attackTimer = 0;
+
+    [Header("Attributes")]
+    [SerializeField] protected float baseDef;
+    protected Dictionary<string, float> stats;
+    protected Dictionary<string, float> baseStats;
     protected virtual void Awake()
     {
         base.Awake();
+        boxCollider = GetComponent<BoxCollider2D>();
+        baseStats = new Dictionary<string, float>();
+        stats = new Dictionary<string, float>();
         startingHealth = baseHealth * runHandler.HealthModifier();
         currentHealth = startingHealth;
         attackDamage = baseAttackDamage * runHandler.DamageModifier();
+        baseStats.Add("health", startingHealth);
+        baseStats.Add("damage", attackDamage);
+        baseStats.Add("def", baseDef);
+        stats.Add("health", startingHealth);
+        stats.Add("damage", attackDamage);
+        stats.Add("def", baseDef);
+        def = stats["def"];
         hit = false;
         dead = false;
     }
@@ -44,6 +60,20 @@ public class Enemy : Health
     }
     public virtual void Spawn(Vector2 position)
     {
+        startingHealth = baseStats["health"] * runHandler.HealthModifier();
+        attackDamage = baseStats["damage"] * runHandler.DamageModifier();
+        stats["health"] = startingHealth;
+        stats["damage"] = attackDamage;
+        stats["def"] = baseStats["def"] * runHandler.DefModifier();
+        def = stats["def"];
+        boxCollider.enabled = true;
+        hit = false;
+        dead = false;
+        currentHealth = startingHealth;
+        attackTimer = attackCooldown;
+        navMeshAgent.updatePosition = true;
+        navMeshAgent.updateRotation = false;
+        navMeshAgent.updateUpAxis = false;
     }
     public virtual Vector2 CalcSpawnPos()
     {
