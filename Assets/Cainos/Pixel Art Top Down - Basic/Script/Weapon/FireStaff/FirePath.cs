@@ -83,11 +83,11 @@ public class FirePath : MonoBehaviour
     {
         if (collision.CompareTag("Destroyable"))
         {
-            collision.GetComponent<Destroyable>().TakeDamage(damage);
+            collision.GetComponent<Destroyable>().TakeDamage(damage, PlayerAttack.stats["critRate"], PlayerAttack.stats["critDamage"], PlayerAttack.stats["defPen"]);
         }
         if (collision.CompareTag("Enemy"))
         {
-            collision.GetComponent<Enemy>()?.TakeDamage(damage);
+            collision.GetComponent<Enemy>()?.TakeDamage(damage, PlayerAttack.stats["critRate"], PlayerAttack.stats["critDamage"], PlayerAttack.stats["defPen"]);
             collision.GetComponent<Enemy>()?.ActivateAnim();
         }
     }

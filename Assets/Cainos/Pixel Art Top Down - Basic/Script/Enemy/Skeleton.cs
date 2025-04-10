@@ -128,11 +128,11 @@ public class Skeleton : Enemy
     {
         if (collision.CompareTag("Destroyable"))
         {
-            collision.GetComponent<Destroyable>().TakeDamage(attackDamage);
+            collision.GetComponent<Destroyable>().TakeDamage(attackDamage, 0, 0, 0);
         }
         if (collision.CompareTag("Player"))
         {
-            collision.GetComponent<PlayerAttack>().TakeDamage(attackDamage);
+            collision.GetComponent<PlayerAttack>().TakeDamage(attackDamage, 0, 0, 0);
             collision.GetComponent<PlayerAttack>().ActivateAnim();
         }
     }

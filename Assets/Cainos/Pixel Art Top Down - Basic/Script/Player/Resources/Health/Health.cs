@@ -8,6 +8,7 @@ public class Health : MonoBehaviour
     [SerializeField] public float baseHealthRegen;
     public float healthRegenerateSpeed;
     protected float def;
+    protected float dodge;
     public float currentHealth { get; protected set; }
     protected void Awake()
     {
@@ -32,8 +33,14 @@ public class Health : MonoBehaviour
             gameObject.SetActive(false);
         }
     }
-    public void TakeDamage(float damage)
+    public void TakeDamage(float damage, float critRate, float critDamage, float defPen)
     {
-        currentHealth = Mathf.Clamp(currentHealth - damage * (100f - def) / 100f, 0, startingHealth);
+        if (Random.Range(0f, 100f) < dodge)
+        {
+            return;
+        }
+        float tempDamage = damage * (100f - Mathf.Max(def - defPen, 0)) / 100f;
+        float finalDamage = tempDamage * (Random.Range(0f, 100f) < critRate ? critDamage / 100f : 1f);
+        currentHealth = Mathf.Clamp(currentHealth - finalDamage, 0, startingHealth);
     }
 }

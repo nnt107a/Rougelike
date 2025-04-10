@@ -31,7 +31,7 @@ public class Collectable : MonoBehaviour
     }
     protected bool PlayerCollectable()
     {
-        RaycastHit2D hit = Physics2D.CircleCast(transform.position, playerAttack.stats["collectableRange"], Vector2.zero, 0f, playerLayer);
+        RaycastHit2D hit = Physics2D.CircleCast(transform.position, PlayerAttack.stats["collectableRange"], Vector2.zero, 0f, playerLayer);
         return hit.collider != null;
     }
 }

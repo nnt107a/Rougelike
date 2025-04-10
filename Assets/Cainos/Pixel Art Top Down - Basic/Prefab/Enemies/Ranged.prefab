@@ -243,6 +243,7 @@ MonoBehaviour:
   coinHolder: {fileID: 0}
   expHolder: {fileID: 0}
   baseDef: 10
+  defCap: 60
   fleeRange: 2
   fleeDistance: 4
   stoppingDistance: 6

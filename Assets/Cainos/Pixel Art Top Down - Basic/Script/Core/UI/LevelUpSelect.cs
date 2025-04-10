@@ -14,6 +14,7 @@ public class LevelUpSelect : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     private RectTransform rectTransform;
     private string name;
     private float floatValue;
+    private bool percentage;
     private void Awake()
     {
         txt = GetComponentInChildren<Text>();
@@ -32,8 +33,18 @@ public class LevelUpSelect : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         name = levelUp.attributes[p].Split(",")[0];
         string displayName = levelUp.attributes[p].Split(",")[1];
         string value = levelUp.attributes[p].Split(",")[2];
-        floatValue = float.Parse(value);
-        attribute += displayName + " by " + floatValue * 100 + "%";
+        percentage = levelUp.attributes[p].Split(",")[3] == "1" ? true : false;
+        if (value[value.Length - 1] != '%')
+        {
+            floatValue = float.Parse(value);
+            attribute += displayName + " by " + floatValue * 100 + "%";
+        }
+        else
+        {
+            floatValue = float.Parse(value.Substring(0, value.Length - 1));
+            attribute += displayName + " by " + value;
+        }
+        
         txt.text = attribute;
     }
     public void OnPointerEnter(PointerEventData eventData)
@@ -47,7 +58,7 @@ public class LevelUpSelect : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     }
     public void OnPointerClick(PointerEventData eventData)
     {
-        playerAttack.ModifyStat(name, floatValue, true);
+        playerAttack.ModifyStat(name, floatValue, percentage);
         levelUpSelection.SetActive(false);
         Time.timeScale = 1;
     }

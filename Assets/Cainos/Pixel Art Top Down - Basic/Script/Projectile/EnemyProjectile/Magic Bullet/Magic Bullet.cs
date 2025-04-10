@@ -61,11 +61,11 @@ public class MagicBullet : MonoBehaviour
 
         if (collision.CompareTag("Destroyable"))
         {
-            collision.GetComponent<Destroyable>().TakeDamage(damage);
+            collision.GetComponent<Destroyable>().TakeDamage(damage, 0, 0, 0);
         }
         if (collision.CompareTag("Player"))
         {
-            collision.GetComponent<PlayerAttack>().TakeDamage(damage);
+            collision.GetComponent<PlayerAttack>().TakeDamage(damage, 0, 0, 0);
             collision.GetComponent<PlayerAttack>().ActivateAnim();
         }
 

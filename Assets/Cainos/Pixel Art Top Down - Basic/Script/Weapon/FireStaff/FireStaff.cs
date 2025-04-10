@@ -5,27 +5,33 @@ public class FireStaff : Weapon
 {
     [Header ("Primary Skill")]
     [SerializeField] private GameObject[] fireballs;
-    [SerializeField] private float primaryCastTime;
+    [SerializeField] private float basePrimaryCastTime;
+    private float primaryCastTime;
 
     [Header ("Secondary Skill")]
-    [SerializeField] private GameObject meteor;
+    [SerializeField] private GameObject[] meteors;
     [SerializeField] private float secondaryRange;
-    [SerializeField] private float secondaryCastTime;
+    [SerializeField] private float baseSecondaryCastTime;
+    private float secondaryCastTime;
 
     [Header("E Skill")]
-    [SerializeField] private GameObject firepath;
-    [SerializeField] private float eCastTime;
+    [SerializeField] private GameObject[] firepaths;
+    [SerializeField] private float baseECastTime;
+    private float eCastTime;
 
     private Vector3 mousePosition;
     private void Awake()
     {
         base.Awake();
+        primaryCastTime = basePrimaryCastTime;
+        secondaryCastTime = baseSecondaryCastTime;
+        eCastTime = baseECastTime;
     }
     private void Update()
     {
         base.Update();
     }
-    private int findFireball()
+    private int FindFireball()
     {
         for (int i = 0; i < fireballs.Length; i++)
         {
@@ -35,6 +41,12 @@ public class FireStaff : Weapon
             }
         }
         return 0;
+    }
+    public override void UpdateCastSpeed()
+    {
+        primaryCastTime = basePrimaryCastTime * (100f - PlayerAttack.stats["castSpeed"]) / 100f;
+        secondaryCastTime = baseSecondaryCastTime * (100f - PlayerAttack.stats["castSpeed"]) / 100f;
+        eCastTime = baseECastTime * (100f - PlayerAttack.stats["castSpeed"]) / 100f;
     }
     protected override void Primary()
     {
@@ -53,12 +65,12 @@ public class FireStaff : Weapon
     {
         base.Primary();
 
-        fireballs[findFireball()].transform.position = player.position;
+        fireballs[FindFireball()].transform.position = player.position;
         Vector2 dir = new Vector2(mousePosition.x - cam.WorldToScreenPoint(player.position).x,
                                   mousePosition.y - cam.WorldToScreenPoint(player.position).y);
         dir.Normalize();
 
-        fireballs[findFireball()].GetComponent<Fireball>().Activate(dir, playerAttack.stats["damage"]);
+        fireballs[FindFireball()].GetComponent<Fireball>().Activate(dir, PlayerAttack.stats["damage"]);
     }
     private IEnumerator ActivatePrimaryTimer()
     {
@@ -82,12 +94,23 @@ public class FireStaff : Weapon
         castingIden = (castingIden + 1) % castingLimit;
         StartCoroutine(ActivateSecondaryTimer());
     }
+    private int FindMeteor()
+    {
+        for (int i = 0; i < meteors.Length; i++)
+        {
+            if (!meteors[i].activeInHierarchy)
+            {
+                return i;
+            }
+        }
+        return 0;
+    }
     private void ActivateSecondary()
     {
         base.Secondary();
 
         Vector2 target = new Vector2(cam.ScreenToWorldPoint(mousePosition).x, cam.ScreenToWorldPoint(mousePosition).y);
-        meteor.GetComponent<Meteor>().Activate(playerAttack.stats["damage"], calcActualPos(player.position, target, secondaryRange));
+        meteors[FindMeteor()].GetComponent<Meteor>().Activate(PlayerAttack.stats["damage"], calcActualPos(player.position, target, secondaryRange));
     }
     private IEnumerator ActivateSecondaryTimer()
     {
@@ -111,6 +134,17 @@ public class FireStaff : Weapon
         castingIden = (castingIden + 1) % castingLimit;
         StartCoroutine(ActivateETimer());
     }
+    private int FindFirepath()
+    {
+        for (int i = 0; i < firepaths.Length; i++)
+        {
+            if (!firepaths[i].activeInHierarchy)
+            {
+                return i;
+            }
+        }
+        return 0;
+    }
     private void ActivateE()
     {
         base.E();
@@ -124,7 +158,7 @@ public class FireStaff : Weapon
                                         mousePosition.y - cam.WorldToScreenPoint(player.position).y);
         offVector.Normalize();
         float angle = Vector2.Angle(offVector, dir);
-        firepath.GetComponent<FirePath>().PreActivate(playerAttack.stats["damage"], player.position, angle, offVector);
+        firepaths[FindFirepath()].GetComponent<FirePath>().PreActivate(PlayerAttack.stats["damage"], player.position, angle, offVector);
     }
     private IEnumerator ActivateETimer()
     {

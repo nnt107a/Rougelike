@@ -20,7 +20,7 @@ public class Exp : Collectable
     {
         if (collision.CompareTag("Player"))
         {
-            playerAttack.exp.IncExp(playerAttack.stats["expMultipler"]);
+            playerAttack.exp.IncExp(PlayerAttack.stats["expMultipler"]);
             gameObject.SetActive(false);
             collecting = false;
         }

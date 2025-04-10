@@ -2,7 +2,6 @@
 using UnityEngine.UI;
 public class TopDownCharacterController : MonoBehaviour
 {
-    public float speed;
     private Animator animator;
     private Rigidbody2D body;
     private Vector2 dir;
@@ -80,7 +79,7 @@ public class TopDownCharacterController : MonoBehaviour
             transform.localScale = new Vector3(-1, 1, 1);
         }
 
-        body.linearVelocity = speed * dir;
+        body.linearVelocity = PlayerAttack.stats["speed"] * dir;
 
         if (Input.GetKey(KeyCode.LeftShift) && dashTimer >= dashCooldown && dir != Vector2.zero)
         {
@@ -105,8 +104,8 @@ public class TopDownCharacterController : MonoBehaviour
             }
             else
             {
-                transform.position = new Vector3(transform.position.x + dashDir.x * dashSpeed * Time.deltaTime,
-                                                transform.position.y + dashDir.y * dashSpeed * Time.deltaTime,
+                transform.position = new Vector3(transform.position.x + dashDir.x * dashSpeed * PlayerAttack.stats["speed"] * Time.deltaTime,
+                                                transform.position.y + dashDir.y * dashSpeed * PlayerAttack.stats["speed"] * Time.deltaTime,
                                                 transform.position.z);
                 dashTime += Time.deltaTime;
             }

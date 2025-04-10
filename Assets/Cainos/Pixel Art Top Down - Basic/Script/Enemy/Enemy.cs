@@ -33,11 +33,13 @@ public class Enemy : Health
 
     [Header("Attributes")]
     [SerializeField] protected float baseDef;
+    [SerializeField] protected float defCap;
     protected Dictionary<string, float> stats;
     protected Dictionary<string, float> baseStats;
     protected virtual void Awake()
     {
         base.Awake();
+        dodge = 0;
         boxCollider = GetComponent<BoxCollider2D>();
         baseStats = new Dictionary<string, float>();
         stats = new Dictionary<string, float>();
@@ -64,7 +66,7 @@ public class Enemy : Health
         attackDamage = baseStats["damage"] * runHandler.DamageModifier();
         stats["health"] = startingHealth;
         stats["damage"] = attackDamage;
-        stats["def"] = baseStats["def"] * runHandler.DefModifier();
+        stats["def"] = Mathf.Min(baseStats["def"] * runHandler.DefModifier(), defCap);
         def = stats["def"];
         boxCollider.enabled = true;
         hit = false;

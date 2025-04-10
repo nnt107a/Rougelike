@@ -5063,7 +5063,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 682285477770034731}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1174298392}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5c622cf81738b5d49bc8c2a16df9d5a8, type: 3}
@@ -20946,6 +20946,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2cb011fbd0329744186f034c0f89e0ec, type: 3}
+--- !u!1 &1174298392 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4479191912072195610, guid: 811bdf11aea846c44a63e14bf5f12c45,
+    type: 3}
+  m_PrefabInstance: {fileID: 682285477770034731}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1175796895 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2414757079636960097, guid: 14088812c243d1842876392bf452139f,
@@ -21415,16 +21421,30 @@ MonoBehaviour:
   - {fileID: -6145296276634656061, guid: 9fffbce36c9b1e34188ab72ab211e95f, type: 3}
   - {fileID: 2784468965456250579, guid: 2daaea2c0445f024b90b55a4fbb383ee, type: 3}
   - {fileID: -6440241708844039593, guid: d7f09551dec84494797047d8a8923902, type: 3}
+  - {fileID: 21300000, guid: 4edaf2d21843d8442929fd546ed164ac, type: 3}
+  - {fileID: -5595748233500887021, guid: a82824e54b150de42ba2d0a0fad2a2db, type: 3}
+  - {fileID: 2445251012989983518, guid: 8e8fe378b5f832e419790ba2cc60e194, type: 3}
+  - {fileID: -4638589941005749908, guid: 652c0e0adbd134a4f8fea0469e438271, type: 3}
+  - {fileID: 1302097703516464295, guid: a956384e344891e48b768f618a9cb090, type: 3}
+  - {fileID: 814516376846801745, guid: 60f04df599063a7469c0d789fe0a52c0, type: 3}
+  - {fileID: -5672869595778636664, guid: eaf23e6cffad4424d98f770cbd1929d8, type: 3}
   levelUpsSelects:
   - {fileID: 86807405}
   - {fileID: 878527156}
   - {fileID: 1595476745}
   attributes:
-  - health,Max HP,0.1
-  - damage,ATK,0.05
-  - healthRegen,Health Regeneration,0.05
-  - mana,Max MP,0.1
-  - def,DEF,0.1
+  - health,Max HP,0.1,1
+  - damage,ATK,0.05,1
+  - healthRegen,Health Regeneration,0.05,1
+  - mana,Max MP,0.1,1
+  - def,DEF,0.1,1
+  - speed,SPD,0.05,1
+  - cooldown,Skill Haste,2%,0
+  - critRate,Crit Rate,2%,0
+  - critDamage,CritDamage,5%,0
+  - castSpeed,Cast Speed,2%,0
+  - defPen,DEF Penetration,2%,0
+  - dodge,Dodge,2%,0
   ints: 00000000000000000000000000000000
 --- !u!1 &1230441081 stripped
 GameObject:
@@ -53060,26 +53080,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2062127426808764429, guid: 811bdf11aea846c44a63e14bf5f12c45,
-        type: 3}
-      propertyPath: lifetime
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 2140854847510075528, guid: 811bdf11aea846c44a63e14bf5f12c45,
-        type: 3}
-      propertyPath: lifetime
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 3145151523252619854, guid: 811bdf11aea846c44a63e14bf5f12c45,
-        type: 3}
-      propertyPath: lifetime
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 4123666547177567120, guid: 811bdf11aea846c44a63e14bf5f12c45,
-        type: 3}
-      propertyPath: lifetime
-      value: 4
-      objectReference: {fileID: 0}
     - target: {fileID: 4479191912072195610, guid: 811bdf11aea846c44a63e14bf5f12c45,
         type: 3}
       propertyPath: m_Name
@@ -53112,11 +53112,6 @@ PrefabInstance:
       objectReference: {fileID: 539774957}
     - target: {fileID: 4850165747237817089, guid: 811bdf11aea846c44a63e14bf5f12c45,
         type: 3}
-      propertyPath: eManaCost
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 4850165747237817089, guid: 811bdf11aea846c44a63e14bf5f12c45,
-        type: 3}
       propertyPath: primaryIcon
       value: 
       objectReference: {fileID: 2098491560}
@@ -53125,6 +53120,16 @@ PrefabInstance:
       propertyPath: playerAttack
       value: 
       objectReference: {fileID: 1622224632}
+    - target: {fileID: 4850165747237817089, guid: 811bdf11aea846c44a63e14bf5f12c45,
+        type: 3}
+      propertyPath: baseECastTime
+      value: 0.3333333
+      objectReference: {fileID: 0}
+    - target: {fileID: 4850165747237817089, guid: 811bdf11aea846c44a63e14bf5f12c45,
+        type: 3}
+      propertyPath: baseECooldown
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 4850165747237817089, guid: 811bdf11aea846c44a63e14bf5f12c45,
         type: 3}
       propertyPath: secondaryIcon
@@ -53137,28 +53142,28 @@ PrefabInstance:
       objectReference: {fileID: 1267266223}
     - target: {fileID: 4850165747237817089, guid: 811bdf11aea846c44a63e14bf5f12c45,
         type: 3}
-      propertyPath: primaryManaCost
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4850165747237817089, guid: 811bdf11aea846c44a63e14bf5f12c45,
-        type: 3}
       propertyPath: secondaryDisplay
       value: 
       objectReference: {fileID: 1979007002}
     - target: {fileID: 4850165747237817089, guid: 811bdf11aea846c44a63e14bf5f12c45,
         type: 3}
-      propertyPath: secondaryManaCost
-      value: 10
+      propertyPath: basePrimaryCastTime
+      value: 0.2
       objectReference: {fileID: 0}
-    - target: {fileID: 5433381027080463739, guid: 811bdf11aea846c44a63e14bf5f12c45,
+    - target: {fileID: 4850165747237817089, guid: 811bdf11aea846c44a63e14bf5f12c45,
         type: 3}
-      propertyPath: lifetime
-      value: 4
+      propertyPath: basePrimaryCooldown
+      value: 0.75
       objectReference: {fileID: 0}
-    - target: {fileID: 6174466465020177470, guid: 811bdf11aea846c44a63e14bf5f12c45,
+    - target: {fileID: 4850165747237817089, guid: 811bdf11aea846c44a63e14bf5f12c45,
         type: 3}
-      propertyPath: lifetime
-      value: 4
+      propertyPath: baseSecondaryCastTime
+      value: 0.4666667
+      objectReference: {fileID: 0}
+    - target: {fileID: 4850165747237817089, guid: 811bdf11aea846c44a63e14bf5f12c45,
+        type: 3}
+      propertyPath: baseSecondaryCooldown
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 6423464715587425417, guid: 811bdf11aea846c44a63e14bf5f12c45,
         type: 3}
@@ -53209,21 +53214,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7198806403227341811, guid: 811bdf11aea846c44a63e14bf5f12c45,
-        type: 3}
-      propertyPath: lifetime
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 8834893646946211497, guid: 811bdf11aea846c44a63e14bf5f12c45,
-        type: 3}
-      propertyPath: lifetime
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 9220337326347969562, guid: 811bdf11aea846c44a63e14bf5f12c45,
-        type: 3}
-      propertyPath: lifetime
-      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -53672,9 +53662,24 @@ PrefabInstance:
       objectReference: {fileID: 1451491146}
     - target: {fileID: 5628018141983903119, guid: ef67ba864d1ecc042b5f4cf48455c0a6,
         type: 3}
+      propertyPath: dashSpeed
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5628018141983903119, guid: ef67ba864d1ecc042b5f4cf48455c0a6,
+        type: 3}
       propertyPath: dashDisplay
       value: 
       objectReference: {fileID: 1062273015}
+    - target: {fileID: 8743169421663962332, guid: ef67ba864d1ecc042b5f4cf48455c0a6,
+        type: 3}
+      propertyPath: defCap
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 8743169421663962332, guid: ef67ba864d1ecc042b5f4cf48455c0a6,
+        type: 3}
+      propertyPath: weapon
+      value: 
+      objectReference: {fileID: 1174298392}
     - target: {fileID: 8743169421663962332, guid: ef67ba864d1ecc042b5f4cf48455c0a6,
         type: 3}
       propertyPath: baseDef
@@ -53682,8 +53687,43 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8743169421663962332, guid: ef67ba864d1ecc042b5f4cf48455c0a6,
         type: 3}
+      propertyPath: dodgeCap
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 8743169421663962332, guid: ef67ba864d1ecc042b5f4cf48455c0a6,
+        type: 3}
+      propertyPath: baseSpeed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8743169421663962332, guid: ef67ba864d1ecc042b5f4cf48455c0a6,
+        type: 3}
+      propertyPath: defPenCap
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 8743169421663962332, guid: ef67ba864d1ecc042b5f4cf48455c0a6,
+        type: 3}
       propertyPath: baseDamage
-      value: 15
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 8743169421663962332, guid: ef67ba864d1ecc042b5f4cf48455c0a6,
+        type: 3}
+      propertyPath: cooldownCap
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 8743169421663962332, guid: ef67ba864d1ecc042b5f4cf48455c0a6,
+        type: 3}
+      propertyPath: baseCritRate
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8743169421663962332, guid: ef67ba864d1ecc042b5f4cf48455c0a6,
+        type: 3}
+      propertyPath: castSpeedCap
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 8743169421663962332, guid: ef67ba864d1ecc042b5f4cf48455c0a6,
+        type: 3}
+      propertyPath: baseCritDamage
+      value: 120
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

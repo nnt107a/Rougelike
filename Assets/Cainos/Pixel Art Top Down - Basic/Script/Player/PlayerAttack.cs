@@ -5,18 +5,29 @@ using System.Collections.Generic;
 public class PlayerAttack : Health
 {
     [Header("Player attributes")]
-    [SerializeField] public float baseDamage;
-    [SerializeField] public float baseCoinMultipler;
-    [SerializeField] public float baseExpMultipler;
-    [SerializeField] public float baseCoinDropRate;
-    [SerializeField] public float baseCollectableRange;
-    [SerializeField] public float baseDef;
+    [SerializeField] private float baseDamage;
+    [SerializeField] private float baseCoinMultipler;
+    [SerializeField] private float baseExpMultipler;
+    [SerializeField] private float baseCoinDropRate;
+    [SerializeField] private float baseCollectableRange;
+    [SerializeField] private float baseDef;
+    [SerializeField] private float baseSpeed;
+    [SerializeField] private float baseCritRate;
+    [SerializeField] private float baseCritDamage;
     public Dictionary<string, float> baseStats;
-    public Dictionary<string, float> stats;
+    public static Dictionary<string, float> stats;
+
+    [Header("Attributes Limit")]
+    [SerializeField] private float defCap;
+    [SerializeField] private float cooldownCap;
+    [SerializeField] private float castSpeedCap;
+    [SerializeField] private float defPenCap;
+    [SerializeField] private float dodgeCap;
 
     [Header("Player resources")]
     [SerializeField] public Mana mana;
     [SerializeField] public ExpBar exp;
+    [SerializeField] private GameObject weapon;
 
     private Animator anim;
     private SpriteRenderer spriteRenderer;
@@ -39,6 +50,9 @@ public class PlayerAttack : Health
         baseStats.Add("coinDropRate", baseCoinDropRate);
         baseStats.Add("collectableRange", baseCollectableRange);
         baseStats.Add("def", baseDef);
+        baseStats.Add("speed", baseSpeed);
+        baseStats.Add("critRate", baseCritRate);
+        baseStats.Add("critDamage", baseCritDamage);
         stats.Add("damage", baseDamage);
         stats.Add("health", baseHealth);
         stats.Add("healthRegen", baseHealthRegen);
@@ -48,7 +62,14 @@ public class PlayerAttack : Health
         stats.Add("expMultipler", baseExpMultipler);
         stats.Add("coinDropRate", baseCoinDropRate);
         stats.Add("collectableRange", baseCollectableRange);
+        stats.Add("speed", baseSpeed);
         stats.Add("def", baseDef);
+        stats.Add("critRate", baseCritRate);
+        stats.Add("critDamage", baseCritDamage);
+        stats.Add("cooldown", 0);
+        stats.Add("castSpeed", 0);
+        stats.Add("defPen", 0);
+        stats.Add("dodge", 0);
         def = stats["def"];
     }
     public void ModifyStat(string attr, float value, bool percentage)
@@ -61,25 +82,45 @@ public class PlayerAttack : Health
         {
             stats[attr] += value;
         }
-        if (attr == "health")
+        switch (attr)
         {
-            startingHealth = stats["health"];
-            currentHealth = Mathf.Clamp(currentHealth + (percentage ? value * baseStats[attr] : value), 0, startingHealth);
+            case "health":
+                startingHealth = stats["health"];
+                currentHealth = Mathf.Clamp(currentHealth + (percentage ? value * baseStats[attr] : value), 0, startingHealth);
+                break;
+            case "healthRegen":
+                healthRegenerateSpeed = stats["healthRegen"];
+                break;
+            case "mana":
+                mana.startingMana = stats["mana"];
+                mana.IncreaseMana((percentage ? value * baseStats[attr] : value));
+                break;
+            case "manaRegen":
+                mana.manaRegenerateSpeed = stats["manaRegen"];
+                break;
+            case "def":
+                stats["def"] = Mathf.Min(stats["def"], defCap);
+                def = stats["def"];
+                break;
+            case "cooldown":
+                stats["cooldown"] = Mathf.Min(stats["cooldown"], cooldownCap);
+                weapon.GetComponent<Weapon>().UpdateCooldown();
+                break;
+            case "castSpeed":
+                stats["castSpeed"] = Mathf.Min(stats["castSpeed"], castSpeedCap);
+                weapon.GetComponent<Weapon>().UpdateCastSpeed();
+                break;
+            case "critRate":
+                stats["critRate"] = Mathf.Min(stats["critRate"], 100f);
+                break;
+            case "defPen":
+                stats["defPen"] = Mathf.Min(stats["defPen"], defPenCap);
+                break;
+            case "dodge":
+                stats["dodge"] = Mathf.Min(stats["dodge"], dodgeCap);
+                dodge = stats["dodge"];
+                break;
         }
-        if (attr == "healthRegen")
-        {
-            healthRegenerateSpeed = stats["healthRegen"];
-        }
-        if (attr == "mana")
-        {
-            mana.startingMana = stats["mana"];
-            mana.IncreaseMana((percentage ? value * baseStats[attr] : value));
-        }
-        if (attr == "manaRegen")
-        {
-            mana.manaRegenerateSpeed = stats["manaRegen"];
-        }
-        def = stats["def"];
     }
     public void ActivateAnim()
     {

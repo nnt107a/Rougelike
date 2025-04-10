@@ -12,7 +12,7 @@ public class CoinHolder : MonoBehaviour
     }
     public void Spawn(Vector3 position)
     {
-        FindCoin().GetComponent<Coin>().Spawn(position, playerAttack.stats["coinDropRate"]);
+        FindCoin().GetComponent<Coin>().Spawn(position, PlayerAttack.stats["coinDropRate"]);
     }
     private GameObject FindCoin()
     {

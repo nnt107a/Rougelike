@@ -255,6 +255,7 @@ MonoBehaviour:
   coinHolder: {fileID: 0}
   expHolder: {fileID: 0}
   baseDef: 20
+  defCap: 60
 --- !u!61 &2928874450945441723
 BoxCollider2D:
   m_ObjectHideFlags: 0
