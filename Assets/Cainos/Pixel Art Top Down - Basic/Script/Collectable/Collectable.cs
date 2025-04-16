@@ -6,6 +6,7 @@ public class Collectable : MonoBehaviour
     [SerializeField] protected float speed;
     [SerializeField] protected LayerMask playerLayer;
     protected bool collecting;
+    public float value = 1f;
     protected void Awake()
     {
         gameObject.SetActive(false);
@@ -21,12 +22,13 @@ public class Collectable : MonoBehaviour
             transform.Translate(tmp * Time.deltaTime * speed);
         }
     }
-    public void Spawn(Vector3 position, float dropRate)
+    public void Spawn(Vector3 position, float dropRate, float _value)
     {
         if (Random.Range(0f, 1f) <= dropRate)
         {
             gameObject.SetActive(true);
             transform.position = position;
+            value = _value;
         }
     }
     protected bool PlayerCollectable()

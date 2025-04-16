@@ -19,6 +19,8 @@ public class Enemy : Health
     [SerializeField] protected RunHandler runHandler;
     [SerializeField] protected CoinHolder coinHolder;
     [SerializeField] protected ExpHolder expHolder;
+    [SerializeField] protected float baseCoin;
+    [SerializeField] protected float baseExp;
     protected float attackDamage;
 
     protected Animator anim;
@@ -87,8 +89,8 @@ public class Enemy : Health
     }
     public virtual void Deactivate()
     {
-        coinHolder.Spawn(transform.position - new Vector3(0.1f, 0, 0));
-        expHolder.Spawn(transform.position + new Vector3(0.1f, 0, 0));
+        coinHolder.Spawn(transform.position - new Vector3(0.1f, 0, 0), RunHandler.CollectableModifier() * baseCoin);
+        expHolder.Spawn(transform.position + new Vector3(0.1f, 0, 0), RunHandler.CollectableModifier() * baseExp);
         spawnerHandler.DecreaseEnemy(enemy);
     }
 }

@@ -20,7 +20,7 @@ public class Coin : Collectable
     {
         if (collision.CompareTag("Player"))
         {
-            CoinHandler.instance.IncCoin(PlayerAttack.stats["coinMultipler"]);
+            CoinHandler.instance.IncCoin(PlayerAttack.stats["coinMultipler"] * value);
             gameObject.SetActive(false);
             collecting = false;
         }

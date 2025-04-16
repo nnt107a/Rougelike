@@ -84,6 +84,8 @@ public class SpawnerHandler : MonoBehaviour
                     if (spawners[rand].minSpawnCount != 0 && spawners[rand].ExistEnemies())
                     {
                         spawners[rand].SpawnEnemy(spawners[rand].FindEnemy());
+                        spawners[rand].minSpawnCount -= 1;
+                        Debug.Log(rand);
                         break;
                     }
                 }
@@ -153,7 +155,7 @@ public class SpawnerHandler : MonoBehaviour
     private IEnumerator CounterToNextWave()
     {
         yield return new WaitForSeconds(5);
-        runHandler.currentWave += 1;
+        RunHandler.currentWave += 1;
         constraintSpawnedCounter = 0;
         spawnedCounter = 0;
         numEnemies = runHandler.EnemiesModifier(baseNumEnemies);

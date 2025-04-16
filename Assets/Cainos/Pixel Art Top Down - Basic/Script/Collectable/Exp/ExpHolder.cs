@@ -10,9 +10,9 @@ public class ExpHolder : MonoBehaviour
     private void Update()
     {
     }
-    public void Spawn(Vector3 position)
+    public void Spawn(Vector3 position, float _value)
     {
-        FindExp().GetComponent<Exp>().Spawn(position, 1);
+        FindExp().GetComponent<Exp>().Spawn(position, 1, _value);
     }
     private GameObject FindExp()
     {

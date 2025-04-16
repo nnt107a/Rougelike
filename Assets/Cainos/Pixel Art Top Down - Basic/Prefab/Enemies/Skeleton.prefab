@@ -254,6 +254,8 @@ MonoBehaviour:
   runHandler: {fileID: 0}
   coinHolder: {fileID: 0}
   expHolder: {fileID: 0}
+  baseCoin: 0.5
+  baseExp: 2
   baseDef: 20
   defCap: 60
 --- !u!61 &2928874450945441723
