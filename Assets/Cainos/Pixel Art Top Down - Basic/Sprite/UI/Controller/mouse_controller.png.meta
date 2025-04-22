@@ -123,6 +123,32 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: iOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -359,7 +385,17 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      mouse_controller_0: 6814654277938575425
+      mouse_controller_1: 7719574449219157949
+      mouse_controller_2: -3410324335876288311
+      mouse_controller_3: -4211276238513926385
+      mouse_controller_4: 4606986685099057106
+      mouse_controller_5: -5983462140572147601
+      mouse_controller_6: 2440474210868810656
+      mouse_controller_7: 6760023760298656050
+      mouse_controller_8: -5656550704968377907
+      mouse_controller_9: -4315311236922006646
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

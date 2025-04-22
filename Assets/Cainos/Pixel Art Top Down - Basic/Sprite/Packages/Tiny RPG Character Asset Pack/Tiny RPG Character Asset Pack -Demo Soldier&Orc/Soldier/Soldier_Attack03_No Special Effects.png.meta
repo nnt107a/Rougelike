@@ -120,6 +120,32 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: iOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -334,7 +360,16 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Soldier_Attack03_No Special Effects_0: -1260688119926531479
+      Soldier_Attack03_No Special Effects_1: 5207653036657714518
+      Soldier_Attack03_No Special Effects_2: -1504928743475443363
+      Soldier_Attack03_No Special Effects_3: -1224779339055643015
+      Soldier_Attack03_No Special Effects_4: -7249159830207462716
+      Soldier_Attack03_No Special Effects_5: -6243786538479730685
+      Soldier_Attack03_No Special Effects_6: -3703874697404721675
+      Soldier_Attack03_No Special Effects_7: 1848736794119154837
+      Soldier_Attack03_No Special Effects_8: 5270411160338086892
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
